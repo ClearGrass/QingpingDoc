@@ -1,4 +1,7 @@
 # 开放接口说明文档
+
+接口默认规范请参见 [规范说明](https://github.com/ClearGrass/QingpingDoc/blob/master/develop-platform/specification.md)
+
 - [开放接口说明文档](#开放接口说明文档)
   - [1. 设备相关接口](#1-设备相关接口)
     - [1.1 绑定设备](#11-绑定设备)
@@ -24,15 +27,16 @@
       - [1.6.1 请求头](#161-请求头)
       - [1.6.2 请求参数](#162-请求参数)
 
-
 ## 1. 设备相关接口
 
 ### 1.1 绑定设备
+
 - **接口说明：** 绑定设备
 - **接口方法：** POST
 - **接口地址：** /v1/apis/devices
 
 #### 1.1.1 请求头
+
 参数名称						    |参数值		        |描述 
 :----						    |:---		        |:---
 &emsp;Authorization				|token		        |格式为 "Bearer YouToken",注意Bearer与token直接有一个空格

@@ -1,5 +1,11 @@
 # 接口授权
 
+- [接口授权](#接口授权)
+  - [获取 API ID 及 API Secret](#获取-api-id-及-api-secret)
+  - [请求 Access Token](#请求-access-token)
+  - [Access Token 使用说明](#access-token-使用说明)
+  - [Access Token 有效期说明](#access-token-有效期说明)
+
 开发者请求平台开放接口，均需要在头部携带一个 Access Token ，作为请求的授权凭证，以下为获取 Access Token 的方法说明。
 
 ## 获取 API ID 及 API Secret
