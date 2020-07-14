@@ -80,7 +80,7 @@
 | tvoc        | 挥发物质 | ppb   |
 | radon       | 氡       | pCi/L |
 
-### 1.9 其他说明
+### 1.8 其他说明
 
 1. 返回的其他信息以Json形式存放于Body中，头部类型为 "Content-Type: application/json"
 2. 返回200以外的状态码时，错误信息格式如下：
