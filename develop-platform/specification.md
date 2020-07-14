@@ -58,11 +58,11 @@
 
 ### 1.6 产品列表
 
-| 产品编号 | 名称                 |
-| -------- | -------------------- |
-| 1001     | 青萍商用温湿度计     |
-| 1002     | 青萍温湿度计         |
-| 1201     | 青萍蓝牙温湿度气压计 |
+| 产品编号 | 名称                 | 支持属性列表                                                   |
+| -------- | ------------------ |-------------------------------------------------------------|
+| 1001     | 青萍商用温湿度计      | battery,timestamp,temperature,humidity                      |
+| 1101     | 青萍温湿度计         | battery,timestamp,temperature,humidity,pressure              |
+| 1201     | 青萍空气检测仪        |battery,timestamp,temperature,humidity,pressure,co2,pm25,tvoc|
 
 ### 1.7 属性列表
 
@@ -80,7 +80,7 @@
 | tvoc        | 挥发物质 | ppb   |
 | radon       | 氡       | pCi/L |
 
-### 1.8 其他说明
+### 1.9 其他说明
 
 1. 返回的其他信息以Json形式存放于Body中，头部类型为 "Content-Type: application/json"
 2. 返回200以外的状态码时，错误信息格式如下：

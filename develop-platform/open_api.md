@@ -52,7 +52,7 @@
 
 请求示例：
 ```
-https://apis.cleargrass.com/v1/portal/apis/devices
+https://apis.cleargrass.com/v1/apis/devices
 // json body
 {
     "device_token": "143412",
@@ -66,10 +66,8 @@ https://apis.cleargrass.com/v1/portal/apis/devices
 info				        |object	    |R			|设备信息
 &emsp;name				    |string		|R			|设备名称
 &emsp;mac				    |string		|R			|设备mac地址
-&emsp;sn				    |string		|R			|设备序列号
 &emsp;version				|string		|R			|设备版本
 &emsp;created_at			|string		|R			|设备注册时间
-&emsp;status			    |[]string	|R			|设备状态 offline(离线) online(在线) alarm(警报) 
 &emsp;product			    |object		|R			|产品信息
 &emsp;&emsp;id			    |string		|C			|产品id
 &emsp;&emsp;desc			|string		|C			|产品描述
@@ -86,10 +84,8 @@ data				        |object	    |C			|设备数据
     "info":{
         "name": "温湿度气压计",
         "mac": "582D34460442",
-        "imei": "82869B172C688BED",
         "version": "1.0.1_0049",
         "created_at": 1573034091,
-        "status":["offline"],
         "product": {"id":"10", "desc":"青萍温湿度气压计"}
     },
     "data":{
@@ -122,7 +118,7 @@ data				        |object	    |C			|设备数据
 
 请求示例：
 ```
-https://apis.cleargrass.com/v1/portal/apis/devices
+https://apis.cleargrass.com/v1/apis/devices
 // json body
 {
     "mac": ["582D34460442"]
@@ -162,10 +158,8 @@ devices				            |[]object	|R			|设备数据
 &emsp;info				        |object	    |R			|设备信息
 &emsp;&emsp;name				|string		|R			|设备名称
 &emsp;&emsp;mac				    |string		|R			|设备mac地址
-&emsp;&emsp;sn				    |string		|R			|设备序列号
 &emsp;&emsp;version				|string		|R			|设备版本
 &emsp;&emsp;created_at			|string		|R			|设备注册时间
-&emsp;&emsp;status			    |[]string	|R			|设备状态 offline(离线) online(在线) alarm(警报) 
 &emsp;&emsp;product			    |object		|R			|产品信息
 &emsp;&emsp;&emsp;id			|string		|C			|产品id
 &emsp;&emsp;&emsp;desc			|string		|C			|产品描述
@@ -190,7 +184,6 @@ devices				            |[]object	|R			|设备数据
             "info":{
                 "name": "温湿度气压计",
                 "mac": "582D34460442",
-                "imei": "82869B172C688BED",
                 "version": "1.0.1_0049",
                 "created_at": 1573034091,
                 "status":["offline"],
@@ -208,7 +201,6 @@ devices				            |[]object	|R			|设备数据
             "info":{
                 "name": "温湿度气压计",
                 "mac": "582D34460442",
-                "imei": "82869B172C688BED",
                 "version": "1.0.1_0049",
                 "created_at": 1573034091,
                 "status":["offline"],
@@ -242,11 +234,10 @@ devices				            |[]object	|R			|设备数据
   
 参数名称				        |类型		|出现要求	|描述  
 :----						|:---		|:------	|:---	
-&emsp;mac				    |string		|R			|设备id
+&emsp;mac				    |string		|R			|设备mac
 &emsp;start_time		    |int		|R			|开始时间
 &emsp;end_time				|int		|R			|结束时间
 &emsp;timestamp				|int		|R			|时间戳
-&emsp;asc				    |bool		|O			|排序 正序or倒叙
 &emsp;offset				|int		|O			|偏移量
 &emsp;limit				    |int		|O			|最大返回数量 不得超过200条
 
@@ -308,7 +299,7 @@ data						            |object		|R			|数据正文
   
 参数名称					    |类型		|出现要求	|描述  
 :----						|:---		|:------	|:---
-&emsp;mac				    |string		|R			|设备id
+&emsp;mac				    |string		|R			|设备mac
 &emsp;start_time		    |int		|R			|开始时间
 &emsp;end_time				|int		|R			|结束时间
 &emsp;timestamp				|int		|R			|时间戳
@@ -320,7 +311,7 @@ data						            |object		|R			|数据正文
 请求示例：
 
 ```
-https://apis.cleargrass.com/v1/portal/apis/devices/events?mac=582D3446029C&end_time=1573527615&limit=200&start_time=1573354814&timestamp=1573527615
+https://apis.cleargrass.com/v1/apis/devices/events?mac=582D3446029C&end_time=1573527615&limit=200&start_time=1573354814&timestamp=1573527615
 ```
 
 #### 1.5.3 返回结果
@@ -396,12 +387,12 @@ events						            |object		|R			|数据正文
 参数名称					    |类型		    |出现要求	    |描述  
 :----						|:---		    |:------	|:---
 &emsp;mac		            |[]string		|R			|mac地址
-&emsp;report_interval		|int		    |R			|上报时间(秒)
-&emsp;collect_interval		|int		    |R			|采集时间(秒)
+&emsp;report_interval		|int		    |R			|上报周期(秒)最小为10s,且为采集周期的整数倍
+&emsp;collect_interval		|int		    |R			|采集周期(秒)
 
 请求示例：
 ```
-https://apis.cleargrass.com/v1/portal/apis/devices/settings
+https://apis.cleargrass.com/v1/apis/devices/settings
 // json body
 {
     "mac": ["582D34460442"],
