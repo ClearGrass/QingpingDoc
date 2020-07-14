@@ -60,8 +60,8 @@
 
 | 产品编号 | 名称                 | 支持属性列表                                                   |
 | -------- | ------------------ |-------------------------------------------------------------|
-| 1001     | 青萍商用温湿度计      | battery,timestamp,temperature,humidity                      |
-| 1101     | 青萍温湿度计         | battery,timestamp,temperature,humidity,pressure              |
+| 1001     | 青萍商用温湿度计      | battery,timestamp,temperature,humidity,prob_temperature,signal |
+| 1101     | 青萍温湿度计         | battery,timestamp,temperature,humidity,pressure,signal       |
 | 1201     | 青萍空气检测仪        |battery,timestamp,temperature,humidity,pressure,co2,pm25,tvoc|
 
 ### 1.7 属性列表
@@ -69,8 +69,10 @@
 | 属性        | 属性     | 单位  |
 | ----------- | -------- | ----- |
 | battery     | 电量     | %     |
+| signal      | 信号     |为负数,数值越大信号越强，如:-50>-90|
 | timestamp   | 时间     | s     |
 | temperature | 温度     | C     |
+| prob_temperature |外接探头温度 | C |
 | humidity    | 湿度     | %     |
 | pressure    | 气压     | kpa   |
 | pm10        | PM1.0    | μg/m³ |
@@ -79,6 +81,7 @@
 | co2         | Co2      | ppb   |
 | tvoc        | 挥发物质 | ppb   |
 | radon       | 氡       | pCi/L |
+
 
 ### 1.8 其他说明
 
