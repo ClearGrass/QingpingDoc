@@ -7,7 +7,8 @@
     - [2.2 申请开放接口 APP ID 及 APP Secret](#22-申请开放接口-app-id-及-app-secret)
     - [1.3 注册 Webhook 信息（可选）](#13-注册-webhook-信息可选)
     - [1.4 注册 MQTT 信息（可选）](#14-注册-mqtt-信息可选)
-  - [3 设备交互动作](#3-设备交互动作)
+  - [3 功能对接支持说明](#3-功能对接支持说明)
+    - [3.1 功能支持说明列表](#31-功能支持说明列表)
 
 ## 1. 设备界面 - 合作方入口
 
@@ -24,13 +25,13 @@
 ### 2.1 帐号注册
 
 - 请注册青萍物联帐号，注册地址为：[青萍物联](https://qingpingiot.com/)
-- 请使用青萍物联帐号登陆青萍开发者平台，平台地址为：[青萍开发者平台](https://xxxx/)
+- 请使用青萍物联帐号登陆青萍开发者平台，平台地址为：[青萍开发者平台](https://developers.qingping.co/)
 
 ### 2.2 申请开放接口 APP ID 及 APP Secret
 
 请在青萍开发者平台，个人中心权限管理页面，申请 APP ID 及 APP Secret，申请成功可以在当前页面看到相关信息。
 
-APP ID 及 APP Secret 用以通过开放接口获取设备相关信息，如：绑定设备、设备列表、设备数据、设备事件等，具体介绍见 [开放接口说明文档](https://github.com/ClearGrass/QingpingDoc/blob/master/develop-platform/open_api.md)
+APP ID 及 APP Secret 用以通过开放接口获取设备相关信息，如：绑定设备、设备列表、设备数据、设备事件等，具体介绍见 [开放接口说明文档](main/openApi)
 
 ### 1.3 注册 Webhook 信息（可选）
 
@@ -58,16 +59,17 @@ APP ID 及 APP Secret 用以通过开放接口获取设备相关信息，如：�
 | Topic Data         | 用于推送设备实时数据（设备根据配置定时上报最新数据）                                                                           |
 | Topic Event        | 用于推送设备事件，包括设备上线、设备下线、低电量、设备报警等，不同类型的产品，支持的事件类型不同，具体请参考相关设备介绍页面。 |
 
-## 3 设备交互动作
+## 3 功能对接支持说明
 
+### 3.1 功能支持说明列表
 
 | 功能                     | 是否支持 | 说明                                                                                                                                                                                                              |
 | ------------------------ | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 设备绑定接口             | 是       | 调用设备绑定接口，绑定设备，接口说明见 [开放接口说明文档 - 1.1 绑定设备](https://github.com/ClearGrass/QingpingDoc/blob/master/develop-platform/open_api.md)                                                      |
 | 设备解绑接口             | 是       | 调用设备解绑接口，解除设备绑定，接口说明见 [开放接口说明文档 - 1.2 删除设备](https://github.com/ClearGrass/QingpingDoc/blob/master/develop-platform/open_api.md) ***注意：用户也可以在设备设置界面操作进行解绑*** |
 | 配置设备数据上报间隔接口 | 是       | 设备默认1分钟上报一次最新数据，如需更短间隔，请调用修改设备配置接口进行修改，接口说明见 [开放接口说明文档 - 1.6 修改设备配置](https://github.com/ClearGrass/QingpingDoc/blob/master/develop-platform/open_api.md) |
-| 获取设备列表接口         | 是       | 获取帐号下设备列表信息，接口请参考[开放接口说明文档](https://github.com/ClearGrass/QingpingDoc/blob/master/develop-platform/open_api.md)                                                                          |
-| 获取设备数据接口         | 是       | 获取帐号下设备的历史数据（包括最新数据）信息，接口请参考[开放接口说明文档](https://github.com/ClearGrass/QingpingDoc/blob/master/develop-platform/open_api.md)                                                    |
+| 获取设备列表接口         | 是       | 获取帐号下设备列表信息，接口请参考[开放接口说明文档](main/openApi)                                                                                                                                                |
+| 获取设备数据接口         | 是       | 获取帐号下设备的历史数据（包括最新数据）信息，接口请参考[开放接口说明文档](main/openApi)                                                                                                                          |
 | 获取设备事件接口         | 否       | 近期会进行支持                                                                                                                                                                                                    |
-| Webhook 推送             | 是       | 如果设置了 Webhook 推送地址，平台会实时推送接收到的设备数据或事件，推送数据格式说明请参见 [WebHook / MQTT 推送说明](https://github.com/ClearGrass/QingpingDoc/blob/master/develop-platform/webhook.md)            |
-| MQTT 推送                | 是       | 如果设置了 MQTT 推送地址，平台会实时推送接收到的设备数据或事件，推送数据格式说明请参见 [WebHook / MQTT 推送说明](https://github.com/ClearGrass/QingpingDoc/blob/master/develop-platform/webhook.md)               |
+| Webhook 推送             | 是       | 如果设置了 Webhook 推送地址，平台会实时推送接收到的设备数据或事件，推送数据格式说明请参见 [WebHook / MQTT 推送说明](main/webhook)                                                                                 |
+| MQTT 推送                | 是       | 如果设置了 MQTT 推送地址，平台会实时推送接收到的设备数据或事件，推送数据格式说明请参见 [WebHook / MQTT 推送说明](main/webhook)                                                                                    |

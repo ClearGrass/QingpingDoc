@@ -66,29 +66,64 @@
 | data              | list   | R        | 设备数据（数组）       |
 
 设备数据字段说明
-不同设备支持的传感器种类不同，所以该结构里的字段均为可选字段
+***注意：*** 不同类型的设备，data 字段返回的属性种类不一样，具体参考[规范说明](main/specification)
 
 | 参数名称    | 类型   | 出现要求 | 描述           |
 | ----------- | ------ | -------- | -------------- |
-| temperature | struct | O        | 温度（结构体） |
-| humidity    | struct | O        | 湿度           |
-| pressure    | struct | O        | 气压           |
-| battery     | struct | O        | 电量           |
-| timestamp   | struct | O        | Unix 时间戳    |
+| temperature | object | C        | 温度（结构体） |
+| humidity    | object | C        | 湿度           |
+| pressure    | object | C        | 气压           |
+| battery     | object | C        | 电量           |
+| timestamp   | object | C        | Unix 时间戳    |
 
 设备数据子类描述
-不同传感器种类输出的数据格式不同，所以该结构里的字段均为可选字段
+不同传感器种类输出的数据格式不同，所以该结构里的字段均为可选字段，具体参考[规范说明](main/specification)
 
 | 参数名称 | 类型   | 出现要求 | 描述 |
 | -------- | ------ | -------- | ---- |
-| value    | float  | O        | 数字 |
-| level    | string | O        | 等级 |
+| value    | float  | R        | 数字 |
+| level    | string | C        | 等级 |
+| status   | string | C        | 状态 |
 
 ### 3.1.1 数据样例
 
 ```json
 {
-
+    "signature": {
+        "signature": "f325c82c5aa8f89bb2af5e10b0605b9a3ff057c1e51db9b460c9ced4797e532e",
+        "timestamp": 1594785322,
+        "token": "0204e1f7-c64f-11ea-b4e9-00163e2c48b3"
+    },
+    "payload": {
+        "info": {
+            "mac": "582D344C046C",
+            "sn": "",
+            "product": {
+                "id": 1101,
+                "desc": "青萍蓝牙温湿度气压计"
+            },
+            "name": "Qingping Temp RH Barometer",
+            "version": "",
+            "created_at": 0
+        },
+        "data": [{
+            "timestamp": {
+                "value": 1594785339
+            },
+            "battery": {
+                "value": 65
+            },
+            "temperature": {
+                "value": 28.5
+            },
+            "humidity": {
+                "value": 50.5
+            },
+            "pressure": {
+                "value": 99.33
+            }
+        }]
+    }
 }
 ```
 
@@ -98,42 +133,44 @@
 
 ### 3.2.1 事件结构说明
 
-| 参数名称          | 类型   | 出现要求 | 描述                   |
-| ----------------- | ------ | -------- | ---------------------- |
-| info.mac          | string | R        | 设备 MAC 地址          |
-| info.product.id   | int    | R        | 设备所属产品类型ID     |
-| info.product.desc | string | R        | 设备所属产品类型描述   |
-| info.name         | string | R        | 设备名称（用户定义的） |
-| events            | list   | R        | 设备事件（数组）       |
+| 参数名称          | 类型   | 出现要求 | 描述                       |
+| ----------------- | ------ | -------- | -------------------------- |
+| info.mac          | string | R        | 设备 MAC 地址              |
+| info.product.id   | int    | R        | 设备所属产品类型ID         |
+| info.product.desc | string | R        | 设备所属产品类型描述       |
+| info.name         | string | R        | 设备名称（用户定义的）     |
+| events            | list   | R        | 设备事件（数组，说明如下） |
 
 设备事件字段说明
 
-| 参数名称     | 类型   | 出现要求 | 描述               |
-| ------------ | ------ | -------- | ------------------ |
-| data         | struct | O        | 触发事件的设备数据 |
-| alert_config | struct | O        | 触发的事件         |
-| status       | int    | O        | 事件发生或解除     |
+| 参数名称     | 类型   | 出现要求 | 描述                           |
+| ------------ | ------ | -------- | ------------------------------ |
+| data         | struct | R        | 触发事件的设备数据（说明如下） |
+| alert_config | struct | C        | 触发的事件                     |
+| status       | int    | C        | 事件发生或解除                 |
 
 设备数据字段说明
-不同设备支持的传感器种类不同，所以该结构里的字段均为可选字段
+***注意：*** 不同类型的设备，data 字段返回的属性种类不一样，具体参考[规范说明](main/specification)
 
 | 参数名称    | 类型   | 出现要求 | 描述           |
 | ----------- | ------ | -------- | -------------- |
-| temperature | struct | O        | 温度（结构体） |
-| humidity    | struct | O        | 湿度           |
-| pressure    | struct | O        | 气压           |
-| battery     | struct | O        | 电量           |
-| timestamp   | struct | O        | Unix 时间戳    |
+| temperature | struct | C        | 温度（结构体） |
+| humidity    | struct | C        | 湿度           |
+| pressure    | struct | C        | 气压           |
+| battery     | struct | C        | 电量           |
+| timestamp   | struct | C        | Unix 时间戳    |
 
 设备数据子类描述
 不同传感器种类输出的数据格式不同，所以该结构里的字段均为可选字段
 
 | 参数名称 | 类型   | 出现要求 | 描述 |
 | -------- | ------ | -------- | ---- |
-| value    | float  | O        | 数字 |
-| level    | string | O        | 等级 |
+| value    | float  | R        | 数字 |
+| level    | string | C        | 等级 |
+| status   | string | C        | 状态 |
 
 设备事件字段描述
+***注意：*** 不同类型的设备，events 的 alert_config.metric_name 支持的事件类型不一样，具体参考[规范说明](main/specification)
 
 | 参数名称    | 类型   | 出现要求 | 描述                           |
 | ----------- | ------ | -------- | ------------------------------ |
@@ -145,6 +182,48 @@
 
 ```json
 {
-
+    "signature": {
+        "signature": "92c81f06fdd8e4149bd0db321bb863ebbb8b930c175480a2c9e96f1657ffa94c",
+        "timestamp": 1594786965,
+        "token": "d580f6e4-c652-11ea-b4e9-00163e2c48b3"
+    },
+    "payload": {
+        "info": {
+            "mac": "582D344C046C",
+            "sn": "",
+            "product": {
+                "id": 1101,
+                "desc": "青萍蓝牙温湿度气压计"
+            },
+            "name": "Qingping Temp RH Barometer",
+            "version": "",
+            "created_at": 0
+        },
+        "events": [{
+            "data": {
+                "timestamp": {
+                    "value": 1594714038
+                },
+                "battery": {
+                    "value": 66
+                },
+                "temperature": {
+                    "value": 29.100000381469727
+                },
+                "humidity": {
+                    "value": 47.900001525878906
+                },
+                "pressure": {
+                    "value": 99.37999725341797
+                }
+            },
+            "alert_config": {
+                "metric_name": "temperature",
+                "operator": "gt",
+                "threshold": 29
+            },
+            "status": 0
+        }]
+    }
 }
 ```
