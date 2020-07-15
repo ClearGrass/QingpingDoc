@@ -57,13 +57,13 @@
 
 ### 3.1.1 数据结构说明
 
-| 参数名称          | 类型   | 出现要求 | 描述                   |
-| ----------------- | ------ | -------- | ---------------------- |
-| info.mac          | string | R        | 设备 MAC 地址          |
-| info.product.id   | int    | R        | 设备所属产品类型ID     |
-| info.product.desc | string | R        | 设备所属产品类型描述   |
-| info.name         | string | R        | 设备名称（用户定义的） |
-| data              | list   | R        | 设备数据（数组）       |
+| 参数名称          | 类型   | 出现要求 | 描述                                        |
+| ----------------- | ------ | -------- | ------------------------------------------- |
+| info.mac          | string | R        | 设备 MAC 地址                               |
+| info.product.id   | int    | R        | 设备所属产品类型ID                          |
+| info.product.desc | string | R        | 设备所属产品类型描述                        |
+| info.name         | string | R        | 设备名称（用户定义的）                      |
+| data              | list   | R        | 设备数据（数组，说明如下:设备数据字段说明） |
 
 设备数据字段说明
 ***注意：*** 不同类型的设备，data 字段返回的属性种类不一样，具体参考[规范说明](main/specification)
@@ -133,32 +133,32 @@
 
 ### 3.2.1 事件结构说明
 
-| 参数名称          | 类型   | 出现要求 | 描述                       |
-| ----------------- | ------ | -------- | -------------------------- |
-| info.mac          | string | R        | 设备 MAC 地址              |
-| info.product.id   | int    | R        | 设备所属产品类型ID         |
-| info.product.desc | string | R        | 设备所属产品类型描述       |
-| info.name         | string | R        | 设备名称（用户定义的）     |
-| events            | list   | R        | 设备事件（数组，说明如下） |
+| 参数名称          | 类型   | 出现要求 | 描述                                        |
+| ----------------- | ------ | -------- | ------------------------------------------- |
+| info.mac          | string | R        | 设备 MAC 地址                               |
+| info.product.id   | int    | R        | 设备所属产品类型ID                          |
+| info.product.desc | string | R        | 设备所属产品类型描述                        |
+| info.name         | string | R        | 设备名称（用户定义的）                      |
+| events            | list   | R        | 设备事件（数组，说明如下:设备事件字段说明） |
 
 设备事件字段说明
 
-| 参数名称     | 类型   | 出现要求 | 描述                           |
-| ------------ | ------ | -------- | ------------------------------ |
-| data         | struct | R        | 触发事件的设备数据（说明如下） |
-| alert_config | struct | C        | 触发的事件                     |
-| status       | int    | C        | 事件发生或解除                 |
+| 参数名称     | 类型   | 出现要求 | 描述                                            |
+| ------------ | ------ | -------- | ----------------------------------------------- |
+| data         | object | R        | 触发事件的设备数据（说明如下:设备数据字段说明） |
+| alert_config | object | C        | 触发的事件（说明如下:设备事件字段描述）         |
+| status       | int    | C        | 事件发生或解除（1）                             |
 
 设备数据字段说明
 ***注意：*** 不同类型的设备，data 字段返回的属性种类不一样，具体参考[规范说明](main/specification)
 
-| 参数名称    | 类型   | 出现要求 | 描述           |
-| ----------- | ------ | -------- | -------------- |
-| temperature | struct | C        | 温度（结构体） |
-| humidity    | struct | C        | 湿度           |
-| pressure    | struct | C        | 气压           |
-| battery     | struct | C        | 电量           |
-| timestamp   | struct | C        | Unix 时间戳    |
+| 参数名称    | 类型   | 出现要求 | 描述        |
+| ----------- | ------ | -------- | ----------- |
+| temperature | object | C        | 温度        |
+| humidity    | object | C        | 湿度        |
+| pressure    | object | C        | 气压        |
+| battery     | object | C        | 电量        |
+| timestamp   | object | C        | Unix 时间戳 |
 
 设备数据子类描述
 不同传感器种类输出的数据格式不同，所以该结构里的字段均为可选字段
@@ -175,7 +175,7 @@
 | 参数名称    | 类型   | 出现要求 | 描述                           |
 | ----------- | ------ | -------- | ------------------------------ |
 | metric_name | string | R        | 事件属性（温度、湿度、电量等） |
-| operator    | string | R        | 触发条件（大于/小于）          |
+| operator    | string | R        | 操作符（gt-大于、lt-小于）     |
 | threshold   | int    | R        | 事件阈值                       |
 
 ### 3.2.2 数据样例

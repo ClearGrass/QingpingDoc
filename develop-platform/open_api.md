@@ -328,23 +328,23 @@ https://apis.cleargrass.com/v1/apis/devices/events?mac=582D3446029C&end_time=157
 
 #### 1.5.3 返回结果
 
-| 参数名称                 | 类型   | 出现要求 | 描述                      |
-| :----------------------- | :----- | :------- | :------------------------ |
-| total                    | int    | R        | 总条数                    |
-| events                   | object | R        | 数据正文                  |
-| &emsp;data               | object | C        | 电量                      |
-| &emsp;&emsp;battery      | object | C        | 电量                      |
-| &emsp;&emsp;humidity     | object | C        | 湿度                      |
-| &emsp;&emsp;pressure     | object | C        | 气压                      |
-| &emsp;&emsp;temperature  | object | C        | 温度                      |
-| &emsp;&emsp;timestamp    | object | R        | 时间戳                    |
-| &emsp;&emsp;&emsp;value  | float  | R        | 数值                      |
-| &emsp;&emsp;&emsp;level  | float  | C        | 等级                      |
-| &emsp;&emsp;&emsp;status | float  | C        | 状态                      |
-| &emsp;alert_config       | object | C        | 触发条件                  |
-| &emsp;&emsp;metric_name  | string | R        | 选项(温度、湿度、气压...) |
-| &emsp;&emsp;operator     | string | R        | 操作符(大于gt、小于lt)    |
-| &emsp;&emsp;threshold    | float  | R        | 阈值                      |
+| 参数名称                 | 类型   | 出现要求 | 描述                           |
+| :----------------------- | :----- | :------- | :----------------------------- |
+| total                    | int    | R        | 总条数                         |
+| events                   | object | R        | 数据正文                       |
+| &emsp;data               | object | C        | 电量                           |
+| &emsp;&emsp;battery      | object | C        | 电量                           |
+| &emsp;&emsp;humidity     | object | C        | 湿度                           |
+| &emsp;&emsp;pressure     | object | C        | 气压                           |
+| &emsp;&emsp;temperature  | object | C        | 温度                           |
+| &emsp;&emsp;timestamp    | object | R        | 时间戳                         |
+| &emsp;&emsp;&emsp;value  | float  | R        | 数值                           |
+| &emsp;&emsp;&emsp;level  | float  | C        | 等级                           |
+| &emsp;&emsp;&emsp;status | float  | C        | 状态                           |
+| &emsp;alert_config       | object | C        | 触发条件                       |
+| &emsp;&emsp;metric_name  | string | R        | 事件属性（温度、湿度、气压等） |
+| &emsp;&emsp;operator     | string | R        | 操作符（大于gt、小于lt）       |
+| &emsp;&emsp;threshold    | float  | R        | 阈值                           |
 
 ***注意：*** 不同类型的设备，events 的 data 字段返回的属性种类不一样，events 的 alert_config.metric_name 支持的事件类型也不一样，具体参考[规范说明](main/specification)
 
