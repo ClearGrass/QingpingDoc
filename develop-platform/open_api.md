@@ -1,6 +1,6 @@
 # 开放接口说明文档
 
-接口默认规范请参见[规范说明](main/specification)
+接口默认规范请参见[规范说明](/main/specification)
 
 - [开放接口说明文档](#开放接口说明文档)
   - [1. 设备相关接口](#1-设备相关接口)
@@ -80,7 +80,7 @@ https://apis.cleargrass.com/v1/apis/devices
 | &emsp;timestamp   | object | C        | 时间         |
 | &emsp;&emsp;value | float  | C        | 数值         |
 
-***注意：*** 不同类型的设备，data 字段返回的属性种类不一样，具体参考[规范说明](main/specification)
+***注意：*** 不同类型的设备，data 字段返回的属性种类不一样，具体参考[规范说明](/main/specification)
 
 ```json
 {
@@ -183,7 +183,7 @@ https://apis.cleargrass.com/v1/apis/devices?timestamp=1573612191
 | &emsp;&emsp;&emsp;level  | float    | C        | 等级         |
 | &emsp;&emsp;&emsp;status | float    | C        | 状态         |
 
-***注意：*** 不同类型的设备，data 字段返回的属性种类不一样，具体参考[规范说明](main/specification)
+***注意：*** 不同类型的设备，data 字段返回的属性种类不一样，具体参考[规范说明](/main/specification)
 
 示例：
 
@@ -271,7 +271,7 @@ https://apis.cleargrass.com/v1/apis/devices?timestamp=1573612191
 | &emsp;timestamp   | object | R        | 时间戳   |
 | &emsp;&emsp;value | float  | R        | 数值     |
 
-***注意：*** 不同类型的设备，data 字段返回的属性种类不一样，具体参考[规范说明](main/specification)
+***注意：*** 不同类型的设备，data 字段返回的属性种类不一样，具体参考[规范说明](/main/specification)
 
 示例：
 
@@ -346,7 +346,7 @@ https://apis.cleargrass.com/v1/apis/devices/events?mac=582D3446029C&end_time=157
 | &emsp;&emsp;operator     | string | R        | 操作符（大于gt、小于lt）       |
 | &emsp;&emsp;threshold    | float  | R        | 阈值                           |
 
-***注意：*** 不同类型的设备，events 的 data 字段返回的属性种类不一样，events 的 alert_config.metric_name 支持的事件类型也不一样，具体参考[规范说明](main/specification)
+***注意：*** 不同类型的设备，events 的 data 字段返回的属性种类不一样，events 的 alert_config.metric_name 支持的事件类型也不一样，具体参考[规范说明](/main/specification)
 
 示例：
 
