@@ -23,7 +23,7 @@ type SensorDataAttrs struct {
 	Humidity    *Attribute     `json:"humidity"`    // 湿度
 	Pm1         *Attribute     `json:"pm1"`         // pm1
 	Pm2         *Attribute     `json:"pm2"`         // pm2.5
-	Pm5         *Attribute     `json:"pm2"`         // pm5
+	Pm5         *Attribute     `json:"pm5"`         // pm5
 	Pm10        *Attribute     `json:"pm10"`        // pm10
 	Co2         *Attribute     `json:"co2"`         // co2
 	Tvoc        *Attribute     `json:"tvoc"`        // tvoc
