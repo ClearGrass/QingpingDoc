@@ -164,7 +164,7 @@ type Command struct {
 ```json
 {
     "mac": "582D34460584",
-    "commandId": "101",
+    "type": "101",
     "desc": "change env",
     "host": {
         "host": "127.0.0.1",
@@ -180,7 +180,7 @@ type Command struct {
 ```json
 {
     "mac": "582D34460584",
-    "commandId": "301",
+    "type": "301",
     "desc": "change settings",
     "setting": {
         "report_interva;": 60,
