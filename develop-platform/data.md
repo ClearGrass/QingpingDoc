@@ -154,8 +154,8 @@ type Command struct {
 
 | 命令编号  | 描述               | 参数列表                         |
 | :-------- | :----------------- | :------------------------------- |
-| &emsp;101 | 修改host(切换环境) | host,user,password               |
-| &emsp;301 | 修改上报频率       | report_interval,collect_interval |
+| &emsp;16  | 修改host(切换环境) | host,user,password               |
+| &emsp;18  | 修改上报频率       | report_interval,collect_interval |
 | &emsp;501 | 查询数据           | report_interval,collect_interval |
 | &emsp;502 | 查询配置           |
 
@@ -164,7 +164,7 @@ type Command struct {
 ```json
 {
     "mac": "582D34460584",
-    "type": "101",
+    "type": "16",
     "desc": "change env",
     "host": {
         "host": "127.0.0.1",
@@ -180,7 +180,7 @@ type Command struct {
 ```json
 {
     "mac": "582D34460584",
-    "type": "301",
+    "type": "18",
     "desc": "change settings",
     "setting": {
         "report_interva;": 60,
