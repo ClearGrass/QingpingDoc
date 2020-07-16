@@ -2,7 +2,7 @@
 
 - [接口授权](#接口授权)
   - [获取 API ID 及 API Secret](#获取-api-id-及-api-secret)
-  - [请求 Access Token](#请求-access-token)
+  - [请求 Access Token （Client Credentials 方式）](#请求-access-token-client-credentials-方式)
   - [Access Token 使用说明](#access-token-使用说明)
   - [Access Token 有效期说明](#access-token-有效期说明)
 
@@ -12,7 +12,7 @@
 
 请使用青萍帐号登陆青萍开发者平台，申请 API ID 及 API Secret，然后可以在平台上查看相关信息。
 
-## 请求 Access Token
+## 请求 Access Token （Client Credentials 方式）
 
 获取 Access Token 采用 OAuth 2.0 的 Client Credentials 方式进行获取，请求参数说明如下：
 
@@ -43,4 +43,4 @@
 
 ## Access Token 有效期说明
 
- Access Token 有效期为获取到开始1小时内，所以请在有效期结束前获取新的 Token
+ Access Token 有效期为获取到开始2小时内，请在有效期结束前获取新的 Token。
