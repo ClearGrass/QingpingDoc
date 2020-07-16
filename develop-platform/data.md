@@ -35,6 +35,13 @@ type SensorDataAttrs struct {
 }
 
 // 设备配置
+type Host struct {
+    Host    string      `json:"host"`
+    User    string      `json:"user"`
+    Password   string   `json:"password"`
+}
+
+// 设备配置
 type Setting struct {
     ReportInterval  int64           `json:"reportInterval"`
     CollectInterval int64           `json:"collectInterval"`
@@ -135,10 +142,11 @@ type SensorData struct {
 type Command struct {
     ID         string            `json:"id"`        // 唯一id
     Mac        string            `json:"mac"`       // 设备mac
-    CommandId  string            `json:"commandId"` // 命令类型id
-    Desc        string           `json:"desc"`      // 命令描述
-    Metadata    map[sting]string `json:"metadata"`  // 元数据
-    Timestamp int64              `json:"timestamp"` // 时间戳
+    Type       string            `json:"type"`      // 命令类型id
+    Desc       string            `json:"desc"`      // 命令描述
+    Conf       Setting           `json:"setting"`   // 配置
+    ServerHost Host              `json:"host"`      // 服务器地址信息
+    Timestamp  int64             `json:"timestamp"` // 时间戳
 }
 ```
 
@@ -158,7 +166,7 @@ type Command struct {
     "mac": "582D34460584",
     "commandId": "101",
     "desc": "change env",
-    "metadata": {
+    "host": {
         "host": "127.0.0.1",
         "user": "root",
         "password":"password"
@@ -174,7 +182,7 @@ type Command struct {
     "mac": "582D34460584",
     "commandId": "301",
     "desc": "change settings",
-    "metadata": {
+    "setting": {
         "report_interva;": 60,
         "collect_interval": 10
     },
