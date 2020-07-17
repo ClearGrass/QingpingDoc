@@ -1,18 +1,30 @@
 # 接口授权
 
 - [接口授权](#接口授权)
-  - [获取 API ID 及 API Secret](#获取-api-id-及-api-secret)
-  - [请求 Access Token（Client Credentials 方式）](#请求-access-tokenclient-credentials-方式)
-  - [Access Token 使用说明](#access-token-使用说明)
-  - [Access Token 有效期说明](#access-token-有效期说明)
+  - [1. 获取 API ID 及 API Secret](#1-获取-api-id-及-api-secret)
+  - [2. 请求 Access Token（Client Credentials 方式）](#2-请求-access-tokenclient-credentials-方式)
+    - [2.1 通信协议](#21-通信协议)
+    - [2.2 接口说明](#22-接口说明)
+  - [2.3 Access Token 使用说明](#23-access-token-使用说明)
+  - [2.4 Access Token 有效期说明](#24-access-token-有效期说明)
 
 开发者请求平台开放接口，均需要在头部携带一个 Access Token ，作为请求的授权凭证，以下为获取 Access Token 的方法说明。
 
-## 获取 API ID 及 API Secret
+## 1. 获取 API ID 及 API Secret
 
 请使用青萍帐号登陆青萍开发者平台，申请 API ID 及 API Secret，然后可以在平台上查看相关信息。
 
-## 请求 Access Token（Client Credentials 方式）
+## 2. 请求 Access Token（Client Credentials 方式）
+
+### 2.1 通信协议
+
+```markdown
+    协议: HTTPS
+    域名: oauth.cleargrass.com
+    Token 路径: /oauth2/token
+```
+
+### 2.2 接口说明
 
 获取 Access Token 采用 OAuth 2.0 的 Client Credentials 方式进行获取，请求参数说明如下：
 
@@ -33,7 +45,7 @@
 | token_type    | Token 类型                        | 字符串类型   |
 | expires_in    | 剩余有效时间（秒）                | 整型         |
 
-## Access Token 使用说明
+## 2.3 Access Token 使用说明
 
 请将获取到的 Access Token 放入各请求的Header中，用于权限验证。
 
@@ -41,6 +53,6 @@
 | --------------------- | --------------- | ------------ |
 | Authorization: Bearer | Header 请求参数 | Access Token |
 
-## Access Token 有效期说明
+## 2.4 Access Token 有效期说明
 
  Access Token 有效期为获取到开始2小时内，请在有效期结束前获取新的 Token。
