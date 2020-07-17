@@ -327,7 +327,7 @@ data						            |object		|R			|数据正文
         "total":200,
         "tags":{
             "device_id":"D7E5B17A4661685C25232F72815920E6",
-            "product":"青萍蓝牙温湿度气压计",
+            "product":"青萍温湿度气压计",
             "sn":"29D726A63B7D01B7",
             "version":"1.0.1_0051"
         }

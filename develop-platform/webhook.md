@@ -104,7 +104,7 @@
             "sn": "",
             "product": {
                 "id": 1101,
-                "desc": "青萍蓝牙温湿度气压计"
+                "desc": "青萍温湿度气压计"
             },
             "name": "Qingping Temp RH Barometer",
             "version": "",
@@ -197,7 +197,7 @@
             "sn": "",
             "product": {
                 "id": 1101,
-                "desc": "青萍蓝牙温湿度气压计"
+                "desc": "青萍温湿度气压计"
             },
             "name": "Qingping Temp RH Barometer",
             "version": "",
