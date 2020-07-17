@@ -1,6 +1,6 @@
 # 开放接口说明文档
 
-接口默认规范请参见[规范说明](/main/specification)
+接口默认规范请参见 [规范说明](/main/specification)
 
 - [开放接口说明文档](#开放接口说明文档)
   - [1. 设备相关接口](#1-设备相关接口)
@@ -44,10 +44,10 @@
 
 #### 1.1.2 请求参数
 
-| 参数名称     | 类型   | 出现要求 | 描述                                                                     |
-| :----------- | :----- | :------- | :----------------------------------------------------------------------- |
-| device_token | string | R        | 配对码                                                                   |
-| product_id   | int    | R        | 产品ID（参考[规范说明 - 2.1 产品列表](/main/specification#21-产品列表)） |
+| 参数名称     | 类型   | 出现要求 | 描述                                                                      |
+| :----------- | :----- | :------- | :------------------------------------------------------------------------ |
+| device_token | string | R        | 配对码                                                                    |
+| product_id   | int    | R        | 产品ID（参考 [规范说明 - 2.1 产品列表](/main/specification#21-产品列表)） |
 
 请求示例：
 
@@ -62,25 +62,25 @@ https://apis.cleargrass.com/v1/apis/devices
 
 #### 1.1.3 返回结果
 
-| 参数名称          | 类型   | 出现要求 | 描述                                                      |
-| :---------------- | :----- | :------- | :-------------------------------------------------------- |
-| info              | object | R        | 设备信息                                                  |
-| &emsp;name        | string | R        | 设备名称                                                  |
-| &emsp;mac         | string | R        | 设备mac地址                                               |
-| &emsp;version     | string | R        | 设备版本                                                  |
-| &emsp;created_at  | string | R        | 设备注册时间                                              |
-| &emsp;product     | object | R        | 产品信息                                                  |
-| &emsp;&emsp;id    | string | C        | 产品ID（参考[规范说明](/main/specification#21-产品列表)） |
-| &emsp;&emsp;desc  | string | C        | 产品描述                                                  |
-| data              | object | C        | 设备数据                                                  |
-| &emsp;battery     | object | C        | 电量                                                      |
-| &emsp;humidity    | object | C        | 湿度                                                      |
-| &emsp;pressure    | object | C        | 气压                                                      |
-| &emsp;temperature | object | C        | 温度                                                      |
-| &emsp;timestamp   | object | C        | 时间                                                      |
-| &emsp;&emsp;value | float  | C        | 数值                                                      |
+| 参数名称          | 类型   | 出现要求 | 描述                                                       |
+| :---------------- | :----- | :------- | :--------------------------------------------------------- |
+| info              | object | R        | 设备信息                                                   |
+| &emsp;name        | string | R        | 设备名称                                                   |
+| &emsp;mac         | string | R        | 设备mac地址                                                |
+| &emsp;version     | string | R        | 设备版本                                                   |
+| &emsp;created_at  | string | R        | 设备注册时间                                               |
+| &emsp;product     | object | R        | 产品信息                                                   |
+| &emsp;&emsp;id    | string | C        | 产品ID（参考 [规范说明](/main/specification#21-产品列表)） |
+| &emsp;&emsp;desc  | string | C        | 产品描述                                                   |
+| data              | object | C        | 设备数据                                                   |
+| &emsp;battery     | object | C        | 电量                                                       |
+| &emsp;humidity    | object | C        | 湿度                                                       |
+| &emsp;pressure    | object | C        | 气压                                                       |
+| &emsp;temperature | object | C        | 温度                                                       |
+| &emsp;timestamp   | object | C        | 时间                                                       |
+| &emsp;&emsp;value | float  | C        | 数值                                                       |
 
-***注意：*** 不同类型的设备，data 字段返回的属性种类不一样，具体参考[规范说明](/main/specification)
+***注意：*** 不同类型的设备，data 字段返回的属性种类不一样，具体参考 [规范说明](/main/specification)
 
 ```json
 {
@@ -158,32 +158,32 @@ https://apis.cleargrass.com/v1/apis/devices?timestamp=1573612191
 
 #### 1.3.3 返回结果
 
-| 参数名称                 | 类型     | 出现要求 | 描述                                                      |
-| :----------------------- | :------- | :------- | :-------------------------------------------------------- |
-| total                    | int      | R        | 设备总数                                                  |
-| devices                  | []object | R        | 设备数据                                                  |
-| &emsp;info               | object   | R        | 设备信息                                                  |
-| &emsp;&emsp;name         | string   | R        | 设备名称                                                  |
-| &emsp;&emsp;mac          | string   | R        | 设备mac地址                                               |
-| &emsp;&emsp;version      | string   | R        | 设备版本                                                  |
-| &emsp;&emsp;created_at   | string   | R        | 设备注册时间                                              |
-| &emsp;&emsp;product      | object   | R        | 产品信息                                                  |
-| &emsp;&emsp;&emsp;id     | string   | C        | 产品ID（参考[规范说明](/main/specification#21-产品列表)） |
-| &emsp;&emsp;&emsp;desc   | string   | C        | 产品描述                                                  |
-| &emsp;data               | object   | C        | 设备数据                                                  |
-| &emsp;&emsp;battery      | object   | C        | 电量                                                      |
-| &emsp;&emsp;humidity     | object   | C        | 湿度                                                      |
-| &emsp;&emsp;pressure     | object   | C        | 气压                                                      |
-| &emsp;&emsp;temperature  | object   | C        | 温度                                                      |
-| &emsp;&emsp;tvoc         | object   | C        | 挥发物质                                                  |
-| &emsp;&emsp;co2          | object   | C        | 二氧化碳                                                  |
-| &emsp;&emsp;pm25         | object   | C        | pm25                                                      |
-| &emsp;&emsp;timestamp    | object   | C        | 时间                                                      |
-| &emsp;&emsp;&emsp;value  | float    | C        | 数值                                                      |
-| &emsp;&emsp;&emsp;level  | float    | C        | 等级                                                      |
-| &emsp;&emsp;&emsp;status | float    | C        | 状态                                                      |
+| 参数名称                 | 类型     | 出现要求 | 描述                                                       |
+| :----------------------- | :------- | :------- | :--------------------------------------------------------- |
+| total                    | int      | R        | 设备总数                                                   |
+| devices                  | []object | R        | 设备数据                                                   |
+| &emsp;info               | object   | R        | 设备信息                                                   |
+| &emsp;&emsp;name         | string   | R        | 设备名称                                                   |
+| &emsp;&emsp;mac          | string   | R        | 设备mac地址                                                |
+| &emsp;&emsp;version      | string   | R        | 设备版本                                                   |
+| &emsp;&emsp;created_at   | string   | R        | 设备注册时间                                               |
+| &emsp;&emsp;product      | object   | R        | 产品信息                                                   |
+| &emsp;&emsp;&emsp;id     | string   | C        | 产品ID（参考 [规范说明](/main/specification#21-产品列表)） |
+| &emsp;&emsp;&emsp;desc   | string   | C        | 产品描述                                                   |
+| &emsp;data               | object   | C        | 设备数据                                                   |
+| &emsp;&emsp;battery      | object   | C        | 电量                                                       |
+| &emsp;&emsp;humidity     | object   | C        | 湿度                                                       |
+| &emsp;&emsp;pressure     | object   | C        | 气压                                                       |
+| &emsp;&emsp;temperature  | object   | C        | 温度                                                       |
+| &emsp;&emsp;tvoc         | object   | C        | 挥发物质                                                   |
+| &emsp;&emsp;co2          | object   | C        | 二氧化碳                                                   |
+| &emsp;&emsp;pm25         | object   | C        | pm25                                                       |
+| &emsp;&emsp;timestamp    | object   | C        | 时间                                                       |
+| &emsp;&emsp;&emsp;value  | float    | C        | 数值                                                       |
+| &emsp;&emsp;&emsp;level  | float    | C        | 等级                                                       |
+| &emsp;&emsp;&emsp;status | float    | C        | 状态                                                       |
 
-***注意：*** 不同类型的设备，data 字段返回的属性种类不一样，具体参考[规范说明](/main/specification)
+***注意：*** 不同类型的设备，data 字段返回的属性种类不一样，具体参考 [规范说明](/main/specification)
 
 示例：
 
@@ -271,7 +271,7 @@ https://apis.cleargrass.com/v1/apis/devices?timestamp=1573612191
 | &emsp;timestamp   | object | R        | 时间戳   |
 | &emsp;&emsp;value | float  | R        | 数值     |
 
-***注意：*** 不同类型的设备，data 字段返回的属性种类不一样，具体参考[规范说明](/main/specification)
+***注意：*** 不同类型的设备，data 字段返回的属性种类不一样，具体参考 [规范说明](/main/specification)
 
 示例：
 
@@ -346,7 +346,7 @@ https://apis.cleargrass.com/v1/apis/devices/events?mac=582D3446029C&end_time=157
 | &emsp;&emsp;operator     | string | R        | 操作符（大于gt、小于lt）       |
 | &emsp;&emsp;threshold    | float  | R        | 阈值                           |
 
-***注意：*** 不同类型的设备，events 的 data 字段返回的属性种类不一样，events 的 alert_config.metric_name 支持的事件类型也不一样，具体参考[规范说明](/main/specification)
+***注意：*** 不同类型的设备，events 的 data 字段返回的属性种类不一样，events 的 alert_config.metric_name 支持的事件类型也不一样，具体参考 [规范说明](/main/specification)
 
 示例：
 
