@@ -14,6 +14,8 @@
 
 请使用青萍帐号登陆青萍开发者平台，申请 API ID 及 API Secret，然后可以在平台上查看相关信息。
 
+------
+
 ## 2. 请求 Access Token（Client Credentials 方式）
 
 ### 2.1 通信协议
