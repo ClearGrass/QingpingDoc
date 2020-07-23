@@ -37,10 +37,10 @@
 
 #### 1.1.1 请求头
 
-| 参数名称      | 参数值           | 描述                                                     |
-| :------------ | :--------------- | :------------------------------------------------------- |
-| Authorization | token            | 格式为 "Bearer YouToken",注意Bearer与token直接有一个空格 |
-| Content-Type  | application/json | 固定值                                                   |
+| 参数名称      | 参数值           | 描述                                                          |
+| :------------ | :--------------- | :------------------------------------------------------------ |
+| Authorization | token            | 格式为 "Bearer YouToken"，注意 Bearer 与 token 之间有一个空格 |
+| Content-Type  | application/json | 固定值                                                        |
 
 #### 1.1.2 请求参数
 
@@ -109,10 +109,10 @@ https://apis.cleargrass.com/v1/apis/devices
 
 #### 1.2.1 请求头
 
-| 参数名称      | 参数值           | 描述                                                     |
-| :------------ | :--------------- | :------------------------------------------------------- |
-| Authorization | token            | 格式为 "Bearer YouToken",注意Bearer与token直接有一个空格 |
-| Content-Type  | application/json | 固定值                                                   |
+| 参数名称      | 参数值           | 描述                                                          |
+| :------------ | :--------------- | :------------------------------------------------------------ |
+| Authorization | token            | 格式为 "Bearer YouToken"，注意 Bearer 与 token 之间有一个空格 |
+| Content-Type  | application/json | 固定值                                                        |
 
 #### 1.2.2 请求参数
 
@@ -138,9 +138,9 @@ https://apis.cleargrass.com/v1/apis/devices
 
 #### 1.3.1 请求头
 
-| 参数名称      | 参数值 | 描述                                                     |
-| :------------ | :----- | :------------------------------------------------------- |
-| Authorization | token  | 格式为 "Bearer YouToken",注意Bearer与token直接有一个空格 |
+| 参数名称      | 参数值 | 描述                                                          |
+| :------------ | :----- | :------------------------------------------------------------ |
+| Authorization | token  | 格式为 "Bearer YouToken"，注意 Bearer 与 token 之间有一个空格 |
 
 #### 1.3.2 请求参数
 
@@ -237,9 +237,9 @@ https://apis.cleargrass.com/v1/apis/devices?timestamp=1573612191
 
 #### 1.4.1 请求头
 
-| 参数名称      | 参数值 | 描述                                                     |
-| :------------ | :----- | :------------------------------------------------------- |
-| Authorization | token  | 格式为 "Bearer YouToken",注意Bearer与token直接有一个空格 |
+| 参数名称      | 参数值 | 描述                                                          |
+| :------------ | :----- | :------------------------------------------------------------ |
+| Authorization | token  | 格式为 "Bearer YouToken"，注意 Bearer 与 token 之间有一个空格 |
 
 #### 1.4.2 请求参数
 
@@ -305,9 +305,9 @@ https://apis.cleargrass.com/v1/apis/devices?timestamp=1573612191
 
 #### 1.5.1 请求头
 
-| 参数名称            | 参数值 | 描述                                                     |
-| :------------------ | :----- | :------------------------------------------------------- |
-| &emsp;Authorization | token  | 格式为 "Bearer YouToken",注意Bearer与token直接有一个空格 |
+| 参数名称            | 参数值 | 描述                                                          |
+| :------------------ | :----- | :------------------------------------------------------------ |
+| &emsp;Authorization | token  | 格式为 "Bearer YouToken"，注意 Bearer 与 token 之间有一个空格 |
 
 #### 1.5.2 请求参数
 
@@ -394,10 +394,10 @@ https://apis.cleargrass.com/v1/apis/devices/events?mac=582D3446029C&end_time=157
 
 #### 1.6.1 请求头
 
-| 参数名称      | 参数值           | 描述                                                     |
-| :------------ | :--------------- | :------------------------------------------------------- |
-| Authorization | token            | 格式为 "Bearer YouToken",注意Bearer与token直接有一个空格 |
-| Content-Type  | application/json | 固定值                                                   |
+| 参数名称      | 参数值           | 描述                                                          |
+| :------------ | :--------------- | :------------------------------------------------------------ |
+| Authorization | token            | 格式为 "Bearer YouToken"，注意 Bearer 与 token 之间有一个空格 |
+| Content-Type  | application/json | 固定值                                                        |
 
 #### 1.6.2 请求参数
 
