@@ -19,7 +19,7 @@
 
 ```markdown
     协议: HTTPS
-    域名: apis.cleargrass.com
+    域名: apis.qingpingcloud.com
 ```
 
 ### 1.2 请求方法
