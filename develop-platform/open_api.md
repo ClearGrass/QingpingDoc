@@ -53,7 +53,7 @@
 请求示例：
 
 ```sh
-https://apis.qingpingcloud.com/v1/apis/devices
+https://apis.cleargrass.com/v1/apis/devices
 
 {
     "device_token": "143412",
@@ -124,7 +124,7 @@ https://apis.qingpingcloud.com/v1/apis/devices
 请求示例：
 
 ```sh
-https://apis.qingpingcloud.com/v1/apis/devices
+https://apis.cleargrass.com/v1/apis/devices
 
 {
     "mac": ["582D34460442"]
@@ -154,7 +154,7 @@ https://apis.qingpingcloud.com/v1/apis/devices
 请求示例：
 
 ```sh
-https://apis.qingpingcloud.com/v1/apis/devices?timestamp=1573612191
+https://apis.cleargrass.com/v1/apis/devices?timestamp=1573612191
 ```
 
 #### 1.3.3 返回结果
@@ -256,7 +256,7 @@ https://apis.qingpingcloud.com/v1/apis/devices?timestamp=1573612191
 请求示例：
 
 ```sh
- https://apis.qingpingcloud.com/v1/apis/devices/data?mac=582D3446029C&end_time=1573527615&limit=200&start_time=1573354814&timestamp=1573527615
+ https://apis.cleargrass.com/v1/apis/devices/data?mac=582D3446029C&end_time=1573527615&limit=200&start_time=1573354814&timestamp=1573527615
 ```
 
 #### 1.4.3 返回结果
@@ -324,7 +324,7 @@ https://apis.qingpingcloud.com/v1/apis/devices?timestamp=1573612191
 请求示例：
 
 ```sh
-https://apis.qingpingcloud.com/v1/apis/devices/events?mac=582D3446029C&end_time=1573527615&limit=200&start_time=1573354814&timestamp=1573527615
+https://apis.cleargrass.com/v1/apis/devices/events?mac=582D3446029C&end_time=1573527615&limit=200&start_time=1573354814&timestamp=1573527615
 ```
 
 #### 1.5.3 返回结果
@@ -411,7 +411,7 @@ https://apis.qingpingcloud.com/v1/apis/devices/events?mac=582D3446029C&end_time=
 请求示例：
 
 ```sh
-https://apis.qingpingcloud.com/v1/apis/devices/settings
+https://apis.cleargrass.com/v1/apis/devices/settings
 
 {
     "mac": ["582D34460442"],

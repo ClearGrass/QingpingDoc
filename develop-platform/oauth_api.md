@@ -22,7 +22,7 @@
 
 ```markdown
     协议: HTTPS
-    域名: oauth.qingpingcloud.com
+    域名: oauth.cleargrass.com
     Token 路径: /oauth2/token
 ```
 
