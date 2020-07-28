@@ -52,10 +52,33 @@
 
 应答格式：
 
-| 协议格式 | ADDR | CMD  | LEN  | DATA         | CRC                   |     |
-| -------- | ---- | ---- | ---- | ------------ | --------------------- | --- |
-| 发送     | 0x01 | 0xFF | 0x02 | 应答的功能码 | 应答状态              | －  |
-|          |      |      |      |              | 成功：0x00 失败：0x01 |     |
+<table>
+    <tr>
+        <th>协议格式</th>
+        <th>ADDR</th>
+        <th>CMD</th>
+        <th>LEN</th>
+        <th colspan="2">DATA</th>
+        <th>CRC</th>
+    </tr>
+    <tr>
+        <td rowspan="3">发送</td>
+        <td rowspan="3">0x01</td>
+        <td rowspan="3">0xFF</td>
+        <td rowspan="3">0x02</td>
+        <td>应答的功能码</td>
+        <td>应答状态</td>
+        <td rowspan="3"> - </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>成功：0x00</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>失败：0x01</td>
+    </tr>
+</table>
 
 说明：
 
@@ -65,11 +88,35 @@
 
 ### 2.2.2 传感器数据上报
 
-| 类型 | ADDR | CMD  | LEN       | DATA     | CRC         |               |              |     |
-| ---- | ---- | ---- | --------- | -------- | ----------- | ------------- | ------------ | --- |
-| 发送 | 0x01 | 0x41 | 0x06-0x24 | 数据类型 | 说明        | －            |              |     |
-|      |      |      |           | 0x00     | 历史数据    |               |              |     |
-|      |      |      |           | 0x01     | 时间戳4字节 | 实时数据6字节 | 版本号10字节 |     |
+<table>
+    <tr>
+        <th>类型</th>
+        <th>ADDR</th>
+        <th>CMD</th>
+        <th>LEN</th>
+        <th colspan="4">DATA</th>
+        <th>CRC</th>
+    </tr>
+    <tr>
+        <td rowspan="3">发送</td>
+        <td rowspan="3">0x01</td>
+        <td rowspan="3">0x41</td>
+        <td rowspan="3">0x06-0x24</td>
+        <td>数据类型</td>
+        <td colspan="3">说明</td>
+        <td rowspan="3"> - </td>
+    </tr>
+    <tr>
+        <td>0x00</td>
+        <td colspan="3">历史数据</td>
+    </tr>
+    <tr>
+        <td>0x01</td>
+        <td>时间戳4字节</td>
+        <td>实时数据6字节</td>
+        <td>版本号10字节</td>
+    </tr>
+</table>
 
 #### 2.2.2.1 历史数据格式说明
 
