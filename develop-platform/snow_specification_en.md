@@ -1,7 +1,7 @@
-# 青萍空气检测仪对接说明
+# Qingping Air Monitor Access Instructions
 
-- [青萍空气检测仪对接说明](#青萍空气检测仪对接说明)
-  - [1. 设备合作方入口](#1-设备合作方入口)
+- [Qingping Air Monitor Access Instructions](#qingping-air-monitor-access-instructions)
+  - [1. Partner entrance on device](#1-partner-entrance-on-device)
   - [2. 开放接口及推送配置](#2-开放接口及推送配置)
     - [2.1 帐号注册](#21-帐号注册)
     - [2.2 申请开放接口 App Key 及 App Secret](#22-申请开放接口-app-key-及-app-secret)
@@ -10,10 +10,10 @@
   - [3. 功能对接支持说明](#3-功能对接支持说明)
     - [3.1 功能支持说明列表](#31-功能支持说明列表)
 
-## 1. 设备合作方入口
+## 1. Partner entrance on device
 
-非企业用户可以忽略此小节  
-在设备设置界面，智能联动选项中：
+If you are not a enterprise user who need API to binding device, please ignore this section.  
+In the setting page of the device, "Automation" panel:
 
 - 可以选择增加单独的合作企业入口，入口中可以展示企业介绍、企业 App 信息等；
 - 为了快速接入，可以考虑使用智能联动中“其他”标签页下的共用动态码入口；
