@@ -1,63 +1,61 @@
 # Specification
 
 - [Specification](#specification)
-  - [1. 接口规范](#1-接口规范)
-    - [1.1 通信协议](#11-通信协议)
-    - [1.2 请求方法](#12-请求方法)
-    - [1.3 格式说明](#13-格式说明)
-    - [1.4 请求接口返回状态说明](#14-请求接口返回状态说明)
-    - [1.5 其他说明](#15-其他说明)
-    - [1.6 Oauth 2.0 Access Token 获取方式](#16-oauth-20-access-token-获取方式)
+  - [1. Open API Specification](#1-open-api-specification)
+    - [1.1 Communication Protocol](#11-communication-protocol)
+    - [1.2 Request Method](#12-request-method)
+    - [1.3 Format Specification](#13-format-specification)
+    - [1.4 Response Code of Open API Specification](#14-response-code-of-open-api-specification)
+    - [1.5 Other Specification](#15-other-specification)
+    - [1.6 Oauth 2.0 Access Token](#16-oauth-20-access-token)
   - [2. Products List and Support Note](#2-products-list-and-support-note)
-    - [2.1 产品列表](#21-产品列表)
-    - [2.2 设备属性及各设备支持情况如下](#22-设备属性及各设备支持情况如下)
-    - [2.3 设备事件及各设备支持情况如下](#23-设备事件及各设备支持情况如下)
+    - [2.1 Products List](#21-products-list)
+    - [2.2 Device Property List and Support Specification of Every Product](#22-device-property-list-and-support-specification-of-every-product)
+    - [2.3 Device Event List and Support Specification of Every Product](#23-device-event-list-and-support-specification-of-every-product)
 
-## 1. 接口规范
+## 1. Open API Specification
 
-### 1.1 通信协议
-
-```markdown
-    协议: HTTPS
-    域名: apis.cleargrass.com
-```
-
-### 1.2 请求方法
+### 1.1 Communication Protocol
 
 ```markdown
-    支持方式 GET POST DELETE PUT
+    Protocol: HTTPS
+    Address: apis.cleargrass.com
 ```
 
-### 1.3 格式说明
+### 1.2 Request Method
 
-接口请求中元素出现要求说明：
+```markdown
+    Supported: GET POST DELETE PUT
+```
 
-| 符号 | 说明                                        |
-| ---- | ------------------------------------------- |
-| R    | 报文中该元素必须出现（Required）            |
-| O    | 报文中该元素可选出现（Optional）            |
-| C    | 报文中该元素在一定条件下出现（Conditional） |
+### 1.3 Format Specification
 
-### 1.4 请求接口返回状态说明
+Parameters requirement in the requests:
 
-请求返回的HTTP状态码说明如下
+| Symbol | Description                                                             |
+| ------ | ----------------------------------------------------------------------- |
+| R      | This parameter must be supplied（Required）                             |
+| O      | This parameter may be supplied（Optional）                              |
+| C      | This parameter will be supplied under certain conditions（Conditional） |
 
-| 状态码 | 说明                           |
-| ------ | ------------------------------ |
-| 200    | 请求处理成功                   |
-| 400    | 请求错误，缺失参数或格式不对等 |
-| 401    | 缺少头部认证信息               |
-| 403    | 请求的资源没有权限             |
-| 404    | 请求的资源不存在               |
-| 409    | 请求冲突                       |
-| 408    | 请求时间过期，请重新请求       |
-| 500    | 服务器内部错误                 |
-| 503    | 服务暂时不可用                 |
+### 1.4 Response Code of Open API Specification
 
-### 1.5 其他说明
+| Status | Description                                      |
+| ------ | ------------------------------------------------ |
+| 200    | Success                                          |
+| 400    | Invalid request, parameter error or format error |
+| 401    | Authorization missing in header                  |
+| 403    | No permission                                    |
+| 404    | Target not found                                 |
+| 409    | Request conflict                                 |
+| 408    | Request expired, please request again            |
+| 500    | Server internal error                            |
+| 503    | Service not available temporarily                |
 
-1. 返回的其他信息以Json形式存放于Body中，头部类型为 "Content-Type: application/json"
-2. 返回200以外的状态码时，错误信息格式如下：
+### 1.5 Other Specification
+
+1. Response content will be put in the body part, in Json formate. The header type is "Content-Type: application/json".
+2. When the response code is not 200, format of error information is like this：
 
 ```json
 {
@@ -65,68 +63,74 @@
 }
 ```
 
-### 1.6 Oauth 2.0 Access Token 获取方式
+### 1.6 Oauth 2.0 Access Token
 
-所有请求均需要携带 Access Token 请求头，Access Token 获取方式参见 [接口授权](/main/oauthApi)
+Every request need an Access Token in the header. How to get the Access Token, please refer to [接口授权](/main/oauthApi)
 
 ------
 
 ## 2. Products List and Support Note
 
-### 2.1 产品列表
+### 2.1 Products List
 
-| 产品编号 | 名称             |
-| -------- | ---------------- |
-| 1001     | 青萍商用温湿度计 |
-| 1101     | 青萍温湿度气压计 |
-| 1201     | 青萍空气检测仪   |
+| Products Code | Products Name                    |
+| ------------- | -------------------------------- |
+| 1001          | Qingping Temp & RH Monitor Pro S |
+| 1101          | Qingping Temp & RH Barometer     |
+| 1201          | Qingping Air Monitor             |
 
-### 2.2 设备属性及各设备支持情况如下
+### 2.2 Device Property List and Support Specification of Every Product
 
-| 属性标示         | 属性描述     | 分量 | 赋值      | 属性值单位/属性等级说明             | 青萍商用温湿度计 | 青萍温湿度气压计 | 青萍空气检测仪 |
-| ---------------- | ------------ | ---- | --------- | ----------------------------------- | :--------------: | :--------------: | :------------: |
-| battery          | 电量         | 值   | 数字      | %                                   |    &#x0221A;     |    &#x0221A;     |   &#x0221A;    |
-|                  |              | 状态 | discharge | 未连接电源                          |                  |                  |   &#x0221A;    |
-|                  |              | 状态 | charging  | 连接电源                            |                  |                  |   &#x0221A;    |
-| signal           | 信号         | 值   | 数字      | 为负数,数值越大信号越强，如:-50>-90 |    &#x0221A;     |    &#x0221A;     |                |
-| timestamp        | 时间         | 值   | 数字      | s                                   |    &#x0221A;     |    &#x0221A;     |   &#x0221A;    |
-| temperature      | 温度         | 值   | 数字      | C                                   |    &#x0221A;     |    &#x0221A;     |   &#x0221A;    |
-|                  |              | 状态 | abnormal  | 传感器异常                          |                  |                  |   &#x0221A;    |
-|                  |              | 状态 | preparing | 传感器准备中                        |                  |                  |   &#x0221A;    |
-|                  |              | 状态 | sampling  | 传感器采集中                        |                  |                  |   &#x0221A;    |
-| prob_temperature | 外接探头温度 | 值   | 数字      | C                                   |    &#x0221A;     |                  |                |
-| humidity         | 湿度         | 值   | 数字      | %                                   |    &#x0221A;     |    &#x0221A;     |   &#x0221A;    |
-|                  |              | 状态 | abnormal  | 传感器异常                          |                  |                  |   &#x0221A;    |
-|                  |              | 状态 | preparing | 传感器准备中                        |                  |                  |   &#x0221A;    |
-|                  |              | 状态 | sampling  | 传感器采集中                        |                  |                  |   &#x0221A;    |
-| pressure         | 气压         | 值   | 数字      | kpa                                 |                  |    &#x0221A;     |                |
-| pm10             | PM1.0        | 值   | 数字      | μg/m³                               |                  |                  |   &#x0221A;    |
-| pm50             | PM5.0        | 值   | 数字      | μg/m³                               |                  |                  |   &#x0221A;    |
-| pm25             | PM2.5        | 值   | 数字      | μg/m³                               |                  |                  |   &#x0221A;    |
-|                  |              | 状态 | abnormal  | 传感器异常                          |                  |                  |   &#x0221A;    |
-|                  |              | 状态 | preparing | 传感器准备中                        |                  |                  |   &#x0221A;    |
-|                  |              | 状态 | idle      | 传感器空闲中                        |                  |                  |   &#x0221A;    |
-|                  |              | 状态 | sampling  | 传感器采集中                        |                  |                  |   &#x0221A;    |
-| pm100            | PM10         | 值   | 数字      | μg/m³                               |                  |                  |                |
-| co2              | Co2          | 值   | 数字      | ppb                                 |                  |                  |   &#x0221A;    |
-| tvoc             | 挥发物质     | 值   | 数字      | ppb                                 |                  |                  |   &#x0221A;    |
-|                  |              | 状态 | abnormal  | 传感器异常                          |                  |                  |   &#x0221A;    |
-|                  |              | 状态 | preparing | 传感器准备中                        |                  |                  |   &#x0221A;    |
-|                  |              | 状态 | initing   | 传感器初始化中                      |                  |                  |   &#x0221A;    |
-|                  |              | 状态 | sampling  | 传感器采集中                        |                  |                  |   &#x0221A;    |
-| radon            | 氡           | 值   | 数字      | pCi/L                               |                  |                  |                |
+| Property         | Description                          | Field Label | Value     | Property Unit / Level Specification                                             | Qingping Temp & RH Monitor Pro S | Qingping Temp & RH Barometer | Qingping Air Monitor |
+| ---------------- | ------------------------------------ | ----------- | --------- | ------------------------------------------------------------------------------- | :------------------------------: | :--------------------------: | :------------------: |
+| battery          | device battery                       | value       | number    | %                                                                               |            &#x0221A;             |          &#x0221A;           |      &#x0221A;       |
+|                  |                                      | status      | discharge | not plug in power                                                               |                                  |                              |      &#x0221A;       |
+|                  |                                      | status      | charging  | plug in power                                                                   |                                  |                              |      &#x0221A;       |
+| signal           | device signal                        | value       | number    | negative number, the larger the value, the stronger the signal, such as:-50>-90 |            &#x0221A;             |          &#x0221A;           |                      |
+| timestamp        | time of the message                  | value       | number    | s                                                                               |            &#x0221A;             |          &#x0221A;           |      &#x0221A;       |
+| temperature      | value of temperature sensor          | value       | number    | C                                                                               |            &#x0221A;             |          &#x0221A;           |      &#x0221A;       |
+|                  |                                      | status      | abnormal  | sensor abnormal                                                                 |                                  |          &#x0221A;           |
+|                  |                                      | status      | preparing | sensor in the preparation stage                                                 |                                  |                              |      &#x0221A;       |
+|                  |                                      | status      | sampling  | sensor in sampling stage                                                        |                                  |          &#x0221A;           |
+| prob_temperature | value of external temperature sensor | value       | number    | C                                                                               |            &#x0221A;             |                              |                      |
+| humidity         | value of humidity sensor             | value       | number    | %                                                                               |            &#x0221A;             |          &#x0221A;           |      &#x0221A;       |
+|                  |                                      | status      | abnormal  | sensor abnormal                                                                 |                                  |                              |                      | &#x0221A; |
+|                  |                                      | status      | preparing | sensor in the preparation stage                                                 |                                  |          &#x0221A;           |
+|                  |                                      | status      | sampling  | sensor in sampling stage                                                        |                                  |                              |      &#x0221A;       |
+| pressure         | value of pressure sensor             | value       | number    | kpa                                                                             |                                  |          &#x0221A;           |                      |
+| pm10             | PM1.0                                | value       | number    | μg/m³                                                                           |                                  |                              |      &#x0221A;       |
+| pm50             | PM5.0                                | value       | number    | μg/m³                                                                           |                                  |                              |      &#x0221A;       |
+| pm25             | PM2.5                                | value       | number    | μg/m³                                                                           |                                  |                              |      &#x0221A;       |
+|                  |                                      | status      | abnormal  | sensor abnormal                                                                 |                                  |                              |                      | &#x0221A; |
+|                  |                                      | status      | preparing | sensor in the preparation stage                                                 |                                  |          &#x0221A;           |
+|                  |                                      | status      | idle      | sensor in the idle stage                                                        |                                  |          &#x0221A;           |
+|                  |                                      | status      | sampling  | sensor in sampling stage                                                        |                                  |                              |      &#x0221A;       |
+| pm100            | PM10                                 | value       | number    | μg/m³                                                                           |                                  |                              |                      |
+| co2              | Co2                                  | value       | number    | ppb                                                                             |                                  |                              |      &#x0221A;       |
+| tvoc             | value of TVOC sensor                 | value       | number    | ppb                                                                             |                                  |                              |      &#x0221A;       |
+|                  |                                      | status      | abnormal  | sensor abnormal                                                                 |                                  |                              |                      | &#x0221A; |
+|                  |                                      | status      | preparing | sensor in the preparation stage                                                 |                                  |                              |      &#x0221A;       |
+|                  |                                      | status      | initing   | sensor in initialization stage                                                  |                                  |                              |                      | &#x0221A; |
+|                  |                                      | status      | sampling  | sensor in sampling stage                                                        |                                  |                              |                      | &#x0221A; |
+| radon            | value of radon sensor                | value       | number    | pCi/L                                                                           |                                  |                              |                      |
 
-***说明：*** &#x0221A; 表示该类型设备支持此属性字段
+***Explain:*** &#x0221A; indicates that this property is supported by the product
 
-### 2.3 设备事件及各设备支持情况如下
+### 2.3 Device Event List and Support Specification of Every Product
 
-| 属性标示         | 属性描述     | 操作符 | 阈值 | 说明                                                                                                                                             | 青萍商用温湿度计 | 青萍温湿度气压计 | 青萍空气检测仪 |
-| ---------------- | ------------ | ------ | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------ | :--------------: | :--------------: | :------------: |
-| battery          | 电量         | lt     | 15   | 电量低于15%，即低电量事件                                                                                                                        |    &#x0221A;     |    &#x0221A;     |                |
-| timestamp        | 时间         | gt     |      | 设备离线2个上报周期，设备离线事件（此2周期的条件是主观设置的，用户可以根据实际需求自己实现该判断，即根据接收到的最后数据时间来判断设备是否离线） |    &#x0221A;     |    &#x0221A;     |                |
-| temperature      | 温度         | gt/lt  | 数字 | 设备温度高于/低于某值                                                                                                                            |    &#x0221A;     |    &#x0221A;     |                |
-| humidity         | 湿度         | gt/lt  | 数字 | 设备湿度高于/低于某值                                                                                                                            |    &#x0221A;     |    &#x0221A;     |                |
-| pressure         | 气压         | gt/lt  | 数字 | 设备湿度高于/低于某值                                                                                                                            |                  |    &#x0221A;     |                |
-| prob_temperature | 外接探头温度 | gt/lt  | 数字 | 设备温度高于/低于某值                                                                                                                            |    &#x0221A;     |                  |                |
+| Property         | Property Description                 | Operator | Threshold | Description                                                                                                                                                                       | Qingping Temp & RH Monitor Pro S | Qingping Temp & RH Barometer | Qingping Air Monitor |
+| ---------------- | ------------------------------------ | -------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------: | :--------------------------: | :------------------: |
+| battery          | low power event                      | lt       | 15        | battery is less than 15%                                                                                                                                                          |            &#x0221A;             |          &#x0221A;           |                      |
+| timestamp        | offline event                        | gt       |           | the device has been offline for 2 report intervals (2 report interval is subjective, you can handle the offline event by yourself according to the last device data you received) |            &#x0221A;             |          &#x0221A;           |                      |
+| temperature      | temperature alert                    | gt/lt    | number    | temperature is bigger or less than the threshold                                                                                                                                  |            &#x0221A;             |          &#x0221A;           |                      |
+| humidity         | humidity alert                       | gt/lt    | number    | humidity is bigger or less than the threshold                                                                                                                                     |            &#x0221A;             |          &#x0221A;           |                      |
+| pressure         | pressure alert                       | gt/lt    | number    | pressure is bigger or less than the threshold                                                                                                                                     |                                  |          &#x0221A;           |                      |
+| prob_temperature | temperature alert of external sensor | gt/lt    | number    | temperature is bigger or less than the threshold                                                                                                                                  |            &#x0221A;             |                              |                      |
 
-***说明：*** &#x0221A; 表示该类型设备支持此属性字段
+***Explain:*** &#x0221A; indicates that this property is supported by the product
+
+拿到以后少一格电；不久又满格了；最后一格电量使用很久
+虚电
+电量曲线采集和拟合
+
+8.15号 magpie
