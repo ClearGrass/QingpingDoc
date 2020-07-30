@@ -2,79 +2,76 @@
 
 - [Qingping Air Monitor Access Instructions](#qingping-air-monitor-access-instructions)
   - [1. Partner entrance on device](#1-partner-entrance-on-device)
-  - [2. 开放接口及推送配置](#2-开放接口及推送配置)
-    - [2.1 帐号注册](#21-帐号注册)
-    - [2.2 申请开放接口 App Key 及 App Secret](#22-申请开放接口-app-key-及-app-secret)
-    - [2.3 注册 Webhook 信息（可选）](#23-注册-webhook-信息可选)
-    - [2.4 注册 MQTT 信息（可选）](#24-注册-mqtt-信息可选)
-  - [3. 功能对接支持说明](#3-功能对接支持说明)
-    - [3.1 功能支持说明列表](#31-功能支持说明列表)
+  - [2. Open API and Data Push Setting](#2-open-api-and-data-push-setting)
+    - [2.1 Account Registration](#21-account-registration)
+    - [2.2 Apply the App Key and App Secret of the Open API](#22-apply-the-app-key-and-app-secret-of-the-open-api)
+    - [2.3 Register Webhooks（Optional）](#23-register-webhooksoptional)
+    - [2.4 Register MQTT Information（Optional）](#24-register-mqtt-informationoptional)
+  - [3. Description of Capability Support](#3-description-of-capability-support)
+    - [3.1 Capability Support List](#31-capability-support-list)
 
 ## 1. Partner entrance on device
 
 If you are not a enterprise user who need API to binding device, please ignore this section.  
 In the setting page of the device, "Automation" panel:
 
-- 可以选择增加单独的合作企业入口，入口中可以展示企业介绍、企业 App 信息等；
-- 为了快速接入，可以考虑使用智能联动中“其他”标签页下的共用动态码入口；
-- 如需要在设置顶层页面定制相关入口，请在平台反馈页面留言
-
-素材准备等详细信息请在平台反馈页面留言，会有相关人员进行具体沟通
+- You can decide to add an entrance of your company to show the information of your company and application.
+- If you don't need the single entrance, you can also use the dynamic number in the "other" page to bind the device.
+- If you want to customize the setting page, please contact us on the feedback page.
 
 ------
 
-## 2. 开放接口及推送配置
+## 2. Open API and Data Push Setting
 
-### 2.1 帐号注册
+### 2.1 Account Registration
 
-- 请注册青萍物联帐号，注册地址为：[青萍物联](https://qingpingiot.com/)
-- 请使用青萍物联帐号登陆青萍开发者平台，平台地址为：[青萍开发者平台](https://developers.qingping.co/)
+- Please register Qingping IoT account, the website is [Qingping IoT](https://qingpingiot.com/)
+- Please use the account of Qingping IoT to log in the developer platform, the website is [ will add a Unix timestamp](https://developers.qingping.co/)
 
-### 2.2 申请开放接口 App Key 及 App Secret
+### 2.2 Apply the App Key and App Secret of the Open API
 
-请在青萍开发者平台，个人中心权限管理页面，申请 App Key 及 App Secret，申请成功可以在当前页面看到相关信息。
+On  will add a Unix timestamp, you can apply the App Key and App Secret on the developer information management page.
+The App Key and App Secret are used for getting the Access Token which is necessary when calling the Open API. The detail about the Open API, please refer to [Open API](/main/openApi)
 
-App Key 及 App Secret 用以通过开放接口获取设备相关信息，如：绑定设备、设备列表、设备数据、设备事件等，具体介绍见 [开放接口说明文档](/main/openApi)
+### 2.3 Register Webhooks（Optional）
 
-### 2.3 注册 Webhook 信息（可选）
+By using webhooks,  will add a Unix timestamp can push the information of your devices to your platform. The data and events the devices report are supported now, so you can get these in near-real-time and do something more.
 
-开发平台支持主动推送设备信息到合作企业平台，实时推送设备数据、设备事件，使企业可以快速获取到设备信息，以满足设备联动需求。
+Please register the webhooks on the developer information management page:
 
-请在青萍开发者平台，个人中心 Webhook 页面，设置相应 Webhook 信息：
+| Webhook      | Description                                                                                                                                                                                                                                                           |
+| ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Device Data  | Used to push the near-real-time data of the devices after the devices reported them                                                                                                                                                                                   |
+| Device Event | Used to push the events of the devices, includes online, offline, low power, alerts and so on. Different products support different events, please refer to [Specification - 2. Products List and Support Note](/main/specification#2-products-list-and-support-note) |
 
-| Webhook  | 说明                                                                                                                           |
-| -------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| 设备数据 | 用于推送设备实时数据（设备根据配置定时上报最新数据）                                                                           |
-| 设备事件 | 用于推送设备事件，包括设备上线、设备下线、低电量、设备报警等，不同类型的产品，支持的事件类型不同，具体请参考相关设备对接页面。 |
+### 2.4 Register MQTT Information（Optional）
 
-### 2.4 注册 MQTT 信息（可选）
+**Notice:** The purposes of MQTT and Webhooks are the same, you should choose one of them.
 
-**注意：**MQTT 推送方式与 Webhook 方式功能一致，两者只能选其一
+Please register MQTT information on the developer information management page:
 
-请在青萍开发者平台，个人中心 MQTT 页面，设置相应 MQTT 信息：
-
-| 项目               | 说明                                                                                                                                                                                              |
-| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| MQTT User Name     | MQTT 连接时所使用的用户名                                                                                                                                                                         |
-| MQTT User Secret   | MQTT 连接时所使用的密钥                                                                                                                                                                           |
-| MQTT Broker List   | MQTT 服务地址                                                                                                                                                                                     |
-| MQTT Client Prefix | MQTT 连接时 Client ID 的前缀（平台默认会在此前缀后加一个毫秒Unix time时间戳以防止重复，此前缀长度不要超过8个字节）                                                                                |
-| Topic Data         | 用于推送设备实时数据（设备根据配置定时上报最新数据）                                                                                                                                              |
-| Topic Event        | 用于推送设备事件，包括设备上线、设备下线、低电量、设备报警等，不同类型的产品，支持的事件类型不同，具体请参考 [规范说明 - 2. 设备列表及属性支持说明](/main/specification#2-设备列表及属性支持说明) |
+| Item               | Description                                                                                                                                                                                                                                                           |
+| ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| MQTT User Name     | User Name for MQTT Connection                                                                                                                                                                                                                                         |
+| MQTT User Secret   | User Secret for MQTT Connection                                                                                                                                                                                                                                       |
+| MQTT Broker List   | MQTT Broker address                                                                                                                                                                                                                                                   |
+| MQTT Client Prefix | The prefix of the client ID in MQTT Connection (Qingping Developer Platform will add a microsecond Unix timestamp after the prefix to avoid repetition, so the length of the prefix should not be longer than 8 bytes)                                                |
+| Topic Data         | Used to push the near-real-time data of the devices after the devices reported them                                                                                                                                                                                   |
+| Topic Event        | Used to push the events of the devices, includes online, offline, low power, alerts and so on. Different products support different events, please refer to [Specification - 2. Products List and Support Note](/main/specification#2-products-list-and-support-note) |
 
 ------
 
-## 3. 功能对接支持说明
+## 3. Description of Capability Support
 
-### 3.1 功能支持说明列表
+### 3.1 Capability Support List
 
-| 功能                     | 是否支持 | 说明                                                                                                                                                          |
-| ------------------------ | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 设备绑定接口             | 是       | 调用设备绑定接口，绑定设备，接口说明见 [开放接口说明文档 - 1.1 绑定设备](/main/openApi#11-绑定设备)                                                           |
-| 设备解绑接口             | 是       | 调用设备解绑接口，解除设备绑定，接口说明见 [开放接口说明文档 - 1.2 删除设备](/main/openApi#12-删除设备) <br> ***注意：用户也可以在设备设置界面操作进行解绑*** |
-| 配置设备数据上报间隔接口 | 是       | 设备默认1分钟上报一次最新数据，如需更短间隔，请调用修改设备配置接口进行修改，接口说明见 [开放接口说明文档 - 1.6 修改设备配置](/main/openApi#16-修改设备配置)  |
-| 获取设备列表接口         | 是       | 获取帐号下设备列表信息，接口请参考 [开放接口说明文档 - 1.3 设备列表](/main/openApi#13-设备列表)                                                               |
-| 获取设备数据接口         | 是       | 获取帐号下设备的历史数据（包括最新数据）信息，接口请参考 [开放接口说明文档 - 1.4 设备历史数据](/main/openApi#14-设备历史数据)                                 |
-| 获取设备事件接口         | 否       | 近期会进行支持                                                                                                                                                |
-| Webhook 推送             | 是       | 如果设置了 Webhook 推送地址，平台会实时推送接收到的设备数据或事件，推送数据格式说明请参见 [WebHook / MQTT 推送说明](/main/webhook)                            |
-| MQTT 推送                | 是       | 如果设置了 MQTT 推送地址，平台会实时推送接收到的设备数据或事件，推送数据格式说明请参见 [WebHook / MQTT 推送说明](/main/webhook)                               |
+| Capability                       | Supported or not | Description                                                                                                                                                                      |
+| -------------------------------- | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Device Binding API               | Yes              | Bind the device to your account, refer to [开放接口说明文档 - 1.1 绑定设备](/main/openApi#11-绑定设备)                                                                           |
+| Device Unbinding API             | Yes              | Unbind device from your account, refer to [开放接口说明文档 - 1.2 删除设备](/main/openApi#12-删除设备) <br> ***Notice: User can also unbind the device on the device***          |
+| Data Report Interval Setting API | Yes              | The device reports  设备默认1分钟上报一次最新数据，如需更短间隔，请调用修改设备配置接口进行修改，接口说明见 [开放接口说明文档 - 1.6 修改设备配置](/main/openApi#16-修改设备配置) |
+| 获取设备列表接口                 | Yes              | 获取帐号下设备列表信息，接口请参考 [开放接口说明文档 - 1.3 设备列表](/main/openApi#13-设备列表)                                                                                  |
+| 获取设备数据接口                 | Yes              | 获取帐号下设备的历史数据（包括最新数据）信息，接口请参考 [开放接口说明文档 - 1.4 设备历史数据](/main/openApi#14-设备历史数据)                                                    |
+| 获取设备事件接口                 | No               | 近期会进行支持                                                                                                                                                                   |
+| Webhook 推送                     | Yes              | 如果设置了 Webhook 推送地址，平台会实时推送接收到的设备数据或事件，推送数据格式说明请参见 [WebHook / MQTT 推送说明](/main/webhook)                                               |
+| MQTT 推送                        | Yes              | 如果设置了 MQTT 推送地址，平台会实时推送接收到的设备数据或事件，推送数据格式说明请参见 [WebHook / MQTT 推送说明](/main/webhook)                                                  |
