@@ -49,6 +49,7 @@
 | :----------- | :----- | :------- | :------------------------------------------------------------------------ |
 | device_token | string | R        | 配对码                                                                    |
 | product_id   | int    | R        | 产品ID（参考 [规范说明 - 2.1 产品列表](/main/specification#21-产品列表)） |
+| timestamp     | int    | R        | 毫秒级时间戳(13位) 20s内有效,同一个请求不可重复|
 
 请求示例：
 
@@ -115,11 +116,13 @@ https://apis.cleargrass.com/v1/apis/devices
 | Authorization | token            | 格式为 "Bearer YouToken"，注意 Bearer 与 token 之间有一个空格 |
 | Content-Type  | application/json | 固定值                                                        |
 
+
 #### 1.2.2 请求参数
 
 | 参数名称 | 类型     | 出现要求 | 描述    |
 | :------- | :------- | :------- | :------ |
 | mac      | []string | R        | mac地址 |
+| timestamp     | int    | R        | 毫秒级时间戳(13位) 20s内有效,同一个请求不可重复|
 
 请求示例：
 
@@ -147,7 +150,7 @@ https://apis.cleargrass.com/v1/apis/devices
 
 | 参数名称  | 类型 | 出现要求 | 描述                        |
 | :-------- | :--- | :------- | :-------------------------- |
-| timestamp | int  | R        | 时间戳                      |
+| timestamp | int    | R        | 毫秒级时间戳(13位) 20s内有效,同一个请求不可重复|
 | offset    | int  | O        | 偏移量                      |
 | limit     | int  | O        | 最大返回数据条数 不得超过50 |
 
@@ -249,7 +252,7 @@ https://apis.cleargrass.com/v1/apis/devices?timestamp=1573612191
 | mac        | string | R        | 设备mac                    |
 | start_time | int    | R        | 开始时间                   |
 | end_time   | int    | R        | 结束时间                   |
-| timestamp  | int    | R        | 时间戳                     |
+| timestamp  | int    | R        | 毫秒级时间戳(13位) 20s内有效,同一个请求不可重复|
 | offset     | int    | O        | 偏移量                     |
 | limit      | int    | O        | 最大返回数量 不得超过200条 |
 
@@ -317,7 +320,7 @@ https://apis.cleargrass.com/v1/apis/devices?timestamp=1573612191
 | &emsp;mac        | string | R        | 设备mac                    |
 | &emsp;start_time | int    | R        | 开始时间                   |
 | &emsp;end_time   | int    | R        | 结束时间                   |
-| &emsp;timestamp  | int    | R        | 时间戳                     |
+| &emsp;timestamp  | int    | R        | 毫秒级时间戳(13位) 20s内有效,同一个请求不可重复|
 | &emsp;offset     | int    | O        | 偏移量                     |
 | &emsp;limit      | int    | O        | 最大返回数量 不得超过200条 |
 
@@ -407,6 +410,7 @@ https://apis.cleargrass.com/v1/apis/devices/events?mac=582D3446029C&end_time=157
 | mac              | []string | R        | mac地址                                    |
 | report_interval  | int      | R        | 上报周期(秒)最小为10s,且为采集周期的整数倍 |
 | collect_interval | int      | R        | 采集周期(秒)                               |
+| timestamp        | int      | R        | 毫秒级时间戳(13位) 20s内有效,同一个请求不可重复|
 
 请求示例：
 
