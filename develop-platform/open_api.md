@@ -58,7 +58,8 @@ https://apis.cleargrass.com/v1/apis/devices
 
 {
     "device_token": "143412",
-    "product_id": "1001"
+    "product_id": "1001",
+    "timestamp": 1596527411689
 }
 ```
 
@@ -130,7 +131,8 @@ https://apis.cleargrass.com/v1/apis/devices
 https://apis.cleargrass.com/v1/apis/devices
 
 {
-    "mac": ["582D34460442"]
+    "mac": ["582D34460442"],
+    "timestamp": 1596527411689,
 }
 ```
 
@@ -157,7 +159,7 @@ https://apis.cleargrass.com/v1/apis/devices
 请求示例：
 
 ```sh
-https://apis.cleargrass.com/v1/apis/devices?timestamp=1573612191
+https://apis.cleargrass.com/v1/apis/devices?timestamp=1596527411689
 ```
 
 #### 1.3.3 返回结果
@@ -259,7 +261,7 @@ https://apis.cleargrass.com/v1/apis/devices?timestamp=1573612191
 请求示例：
 
 ```sh
- https://apis.cleargrass.com/v1/apis/devices/data?mac=582D3446029C&end_time=1573527615&limit=200&start_time=1573354814&timestamp=1573527615
+ https://apis.cleargrass.com/v1/apis/devices/data?mac=582D3446029C&end_time=1573527615&limit=200&start_time=1573354814&timestamp=1596527411689
 ```
 
 #### 1.4.3 返回结果
@@ -327,7 +329,7 @@ https://apis.cleargrass.com/v1/apis/devices?timestamp=1573612191
 请求示例：
 
 ```sh
-https://apis.cleargrass.com/v1/apis/devices/events?mac=582D3446029C&end_time=1573527615&limit=200&start_time=1573354814&timestamp=1573527615
+https://apis.cleargrass.com/v1/apis/devices/events?mac=582D3446029C&end_time=1573527615&limit=200&start_time=1573354814&timestamp=1596527411689
 ```
 
 #### 1.5.3 返回结果
@@ -420,6 +422,7 @@ https://apis.cleargrass.com/v1/apis/devices/settings
 {
     "mac": ["582D34460442"],
     "report_interval": 10,
-    "collect_interval": 5
+    "collect_interval": 5,
+    "timestamp": 1596527411689
 }
 ```
