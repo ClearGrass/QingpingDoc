@@ -65,7 +65,7 @@ Parameters requirement in the requests:
 
 ### 1.6 Oauth 2.0 Access Token
 
-Every request need an Access Token in the header. How to get the Access Token, please refer to [接口授权](/main/oauthApi)
+Every request need an Access Token in the header. How to get the Access Token, please refer to [OAuth 2.0 Protocol Specification](/main/oauthApi)
 
 ------
 

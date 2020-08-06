@@ -69,7 +69,7 @@ When the device reports data to Qingping Developer Platform, the platform will p
 | data              | list   | R           | Device data, list formate, refer to "Device Data Parameter Specification" |
 
 Device Data Parameter Specification
-***Notice:*** Different product has different kinds of parameters, please refer to [规范说明 - 2. 设备列表及属性支持说明](/main/specification#2-设备列表及属性支持说明)
+***Notice:*** Different product has different kinds of parameters, please refer to [Specification - 2. Products List and Support Note](/main/specification#2-products-list-and-support-note)
 
 | Parameter   | Type   | Requirement | Description                                                                        |
 | ----------- | ------ | ----------- | ---------------------------------------------------------------------------------- |
@@ -81,7 +81,7 @@ Device Data Parameter Specification
 
 Device Data Sub-Parameter Specification
 
-***Notice:*** Different sensor has different kinds of outputs, please refer to [规范说明 - 2. 设备列表及属性支持说明](/main/specification#2-设备列表及属性支持说明)
+***Notice:*** Different sensor has different kinds of outputs, please refer to [Specification - 2. Products List and Support Note](/main/specification#2-products-list-and-support-note)
 
 | Parameter | Type   | Requirement | Description        |
 | --------- | ------ | ----------- | ------------------ |
@@ -154,7 +154,7 @@ Device Event Parameter Specification
 | status       | int    | C           | 事件发生或解除（1）                                                                           |
 
 Device Data Parameter Specification
-***Notice:*** Different product has different kinds of parameters, please refer to [规范说明 - 2. 设备列表及属性支持说明](/main/specification#2-设备列表及属性支持说明)
+***Notice:*** Different product has different kinds of parameters, please refer to [Specification - 2. Products List and Support Note](/main/specification#2-products-list-and-support-note)
 
 | Parameter   | Type   | Requirement | Description                                                                        |
 | ----------- | ------ | ----------- | ---------------------------------------------------------------------------------- |
@@ -166,7 +166,7 @@ Device Data Parameter Specification
 
 Device Data Sub-Parameter Specification
 
-***Notice:*** Different sensor has different kinds of outputs, please refer to [规范说明 - 2. 设备列表及属性支持说明](/main/specification#2-设备列表及属性支持说明)
+***Notice:*** Different sensor has different kinds of outputs, please refer to [Specification - 2. Products List and Support Note](/main/specification#2-products-list-and-support-note)
 
 | Parameter | Type   | Requirement | Description        |
 | --------- | ------ | ----------- | ------------------ |
@@ -175,7 +175,7 @@ Device Data Sub-Parameter Specification
 | status    | string | C           | Status from sensor |
 
 Device Event Sub-Parameter Specification
-***Notice:*** Different product has different kinds of alert_config.metric_name for events, please refer to [规范说明 - 2. 设备列表及属性支持说明](/main/specification#2-设备列表及属性支持说明)
+***Notice:*** Different product has different kinds of alert_config.metric_name for events, please refer to [Specification - 2. Products List and Support Note](/main/specification#2-products-list-and-support-note)
 
 | Parameter   | Type   | Requirement | Description                               |
 | ----------- | ------ | ----------- | ----------------------------------------- |

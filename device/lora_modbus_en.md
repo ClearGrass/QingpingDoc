@@ -8,13 +8,17 @@
     - [2.2.1 CMD List](#221-cmd-list)
     - [2.2.2 Sensor Data Report](#222-sensor-data-report)
       - [2.2.2.1 History data format](#2221-history-data-format)
-      - [2.2.2.2 实时数据格式说明](#2222-实时数据格式说明)
-    - [2.2.2 事件上报](#222-事件上报)
-      - [2.2.2.1 传感器数据格式](#2221-传感器数据格式)
-      - [2.2.2.2 事件类型](#2222-事件类型)
-    - [2.2.3 设备获取网络时间](#223-设备获取网络时间)
-    - [2.2.4 事件下发](#224-事件下发)
-    - [2.2.5 配置设置](#225-配置设置)
+      - [2.2.2.2 Real-time Data Format](#2222-real-time-data-format)
+    - [2.2.3 Event Report Format](#223-event-report-format)
+      - [2.2.3.1 Sensor Data Formate](#2231-sensor-data-formate)
+      - [2.2.3.2 Event Type](#2232-event-type)
+    - [2.2.4 Request Network Time](#224-request-network-time)
+    - [2.2.5 Event Configuration Format](#225-event-configuration-format)
+    - [2.2.5.1 Event type](#2251-event-type)
+      - [2.2.5.2 Repeat times](#2252-repeat-times)
+      - [2.2.5.3 Begin and End Time](#2253-begin-and-end-time)
+      - [2.2.5.4 Target Value](#2254-target-value)
+    - [2.2.6 Data Report Configuration](#226-data-report-configuration)
 
 ## 1．Protocol Specification
 
@@ -127,129 +131,126 @@ Deme for one complete history data is:
 
 Analysis of history data:
 
-| Byte Order Number         | Description                                                                          | Value                                                                                                                                                                                                                       |
-| ------------------------- | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1                         | Device address                                                                       | 0x01                                                                                                                                                                                                                        |
-| 2                         | Data report code                                                                     | 0x41                                                                                                                                                                                                                        |
-| 3                         | Data length                                                                          | 0x25                                                                                                                                                                                                                        |
-| 4                         | Data type (history data)                                                             | 0x00                                                                                                                                                                                                                        |
-| 5 - 8                     | Timestamp                                                                            | 0x5C7788B6                                                                                                                                                                                                                  |
-| 9 – 10                    | Data storage interval (seconds)                                                      | 0x0005                                                                                                                                                                                                                      |
-| 11 – 16                   | Sensor data for group 1                                                              | 第1－3字节为温湿度：0x2FC29A, 温度湿度各占12bit, 高12bit为温度，0x02FC, 温度值正向偏移500，实际值为0x02FC-500=264(放大10倍)，低12bit为湿度：0x29A(放大10倍) <br>第4－5字节为气压：0x2766(放大100倍) <br>第6字节为电量：0x4E |
-| 17－22                    | 第2组传感器数据                                                                      |                                                                                                                                                                                                                             |
-| 每6个字节为一组传感器数据 | LoRa：一帧历史数据最多有5组传感器数据 Wi-Fi/NB-Iot: 一帧历史数据最多有40组传感器数据 |                                                                                                                                                                                                                             |
-| 41 - 42                   | 校验码                                                                               | 0x488C                                                                                                                                                                                                                      |
+| Byte Order Number                           | Description                                                                                                      | Value                                                                                                                                                                                                                                                                                                      |
+| ------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1                                           | Device address                                                                                                   | 0x01                                                                                                                                                                                                                                                                                                       |
+| 2                                           | Data report code                                                                                                 | 0x41                                                                                                                                                                                                                                                                                                       |
+| 3                                           | Data length                                                                                                      | 0x25                                                                                                                                                                                                                                                                                                       |
+| 4                                           | Data type (history data)                                                                                         | 0x00                                                                                                                                                                                                                                                                                                       |
+| 5 - 8                                       | Timestamp                                                                                                        | 0x5C7788B6                                                                                                                                                                                                                                                                                                 |
+| 9 – 10                                      | Data acquisition interval (seconds)                                                                              | 0x0005                                                                                                                                                                                                                                                                                                     |
+| 11 – 16                                     | The 1st group sensor data                                                                                        | The 1-3 bytes are temperature and humidity: 0x2FC29A, The high 12 bits are temperature: 0x02FC, actual temperature value is 0x02FC-500=264 (multiply by 10). The low 12 bits are humidity: 0x29A (multiply by 10) <br>The 4-5 bytes are pressure: 0x2766 (multiply by 100) <br>The 6 byte is battery: 0x4E |
+| 17－22                                      | The 2nd group sensor data                                                                                        | Same as 1st group                                                                                                                                                                                                                                                                                          |
+| Every 6 bytes form one group of sensor data | LoRa: one frame includes at most 5 groups of data.<br>Wi-Fi/NB-Iot: one frame includes at most 40 groups of data | Same as 1st group                                                                                                                                                                                                                                                                                          |
+| 41 - 42                                     | CRC                                                                                                              | 0x488C                                                                                                                                                                                                                                                                                                     |
 
-各组传感器时间戳需要根据起始时间戳和数据采集间隔来计算。
-
-如以上参考数据中：
-
-第一组传感器采集时间为：0x5C7788B6
-
-第二组传感器采集时间为：0x5C7788B6 + 0x0005（数据采集间隔）
-
-第三组传感器采集时间为：0x5C7788B6 + 0x0005 + 0x0005
-
+Note:
+Time for each group of sensor data can be get by the beginning timestamp and the data acquisition interval, for example:
+Time for the 1st group of sensor data is: 0x5C7788B6
+Time for the 2nd group of sensor data is: 0x5C7788B6 + 0x0005（acquisition interval）
+Time for the 3rd group of sensor data is: 0x5C7788B6 + 0x0005 + 0x0005
 ...
 
-以此类推至最后的有效数据采集时间。
+#### 2.2.2.2 Real-time Data Format
 
-#### 2.2.2.2 实时数据格式说明
-
-一条完整实时数据上报格式如下：
+Deme for one complete real-time data is:
 
 01 41 15 01 5C 77 88 B6 2F C2 9A 27 66 4E 31 2E 30 2E 30 5F 30 30 34 31 5D C6
 
-实时数据解析：
+Analysis of real-time data:
 
-| 字节序号 | 说明               | 数值                                                                                                                                                                                                                        |
-| -------- | ------------------ | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1        | 设备地址           | 0x01                                                                                                                                                                                                                        |
-| 2        | 数据上报功能码     | 0x41                                                                                                                                                                                                                        |
-| 3        | 数据长度           | 0x15                                                                                                                                                                                                                        |
-| 4        | 数据类型(实时数据) | 0x01                                                                                                                                                                                                                        |
-| 5 - 8    | 时间戳             | 0x5C7788B6                                                                                                                                                                                                                  |
-| 9 – 14   | 传感器数据         | 第1－3字节为温湿度：0x2FC29A, 温度湿度各占12bit, 高12bit为温度，0x02FC, 温度值正向偏移500，实际值为0x02FC-500=264(放大10倍)，低12bit为湿度：0x29A(放大10倍) <br>第4－5字节为气压：0x2766(放大100倍) <br>第6字节为电量：0x4E |
-| 15 - 25  | 版本号             | 对应ASCII：1.0.0_0041                                                                                                                                                                                                       |
-| 26 - 27  | 校验码             | 0x5DC6                                                                                                                                                                                                                      |
+| Byte Order Number | Description                | Value                                                                                                                                                                                                                                                                                                      |
+| ----------------- | -------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1                 | Device address             | 0x01                                                                                                                                                                                                                                                                                                       |
+| 2                 | Data report code           | 0x41                                                                                                                                                                                                                                                                                                       |
+| 3                 | Data length                | 0x15                                                                                                                                                                                                                                                                                                       |
+| 4                 | Data type (real-time data) | 0x01                                                                                                                                                                                                                                                                                                       |
+| 5 - 8             | Timestamp                  | 0x5C7788B6                                                                                                                                                                                                                                                                                                 |
+| 9 – 14            | Sensor data                | The 1-3 bytes are temperature and humidity: 0x2FC29A, The high 12 bits are temperature: 0x02FC, actual temperature value is 0x02FC-500=264 (multiply by 10). The low 12 bits are humidity: 0x29A (multiply by 10) <br>The 4-5 bytes are pressure: 0x2766 (multiply by 100) <br>The 6 byte is battery: 0x4E |
+| 15 - 25           | Version code               | Corresponding ASCII: 1.0.0_0041                                                                                                                                                                                                                                                                            |
+| 26 - 27           | CRC                        | 0x5DC6                                                                                                                                                                                                                                                                                                     |
 
-### 2.2.2 事件上报
+### 2.2.3 Event Report Format
 
-返回参数格式说明：
+| Type   | ADDR | CMD  | LEN  | DATA       |           |             |                     |
+| ------ | ---- | ---- | ---- | ---------- | --------- | ----------- | ------------------- |
+| Accept | 0x01 | 0x44 | 0x0B | Event type | Timestamp | Sensor data | Event configuration |
+|        |      |      |      | 1 byte     | 4 bytes   | 6 bytes     | 2 bytes             |
 
-| 类型 | ADDR | CMD  | LEN  | DATA     |        |            |            |
-| ---- | ---- | ---- | ---- | -------- | ------ | ---------- | ---------- |
-| 接收 | 0x01 | 0x44 | 0x0B | 事件类型 | 时间戳 | 传感器数据 | 事件设置值 |
-|      |      |      |      | 1字节    | 4字节  | 6字节      | 2字节      |
+#### 2.2.3.1 Sensor Data Formate
 
-#### 2.2.2.1 传感器数据格式
+Please refer to Sensor data format in table of [2.2.2.2 实时数据格式说明](/main/private/lorawan#2222-实时数据格式说明)
 
-数据格式具体请参考 [2.2.2.2 实时数据格式说明](/main/private/lorawan#2222-实时数据格式说明) 中表格里的“传感器数据”格式
+#### 2.2.3.2 Event Type
 
-#### 2.2.2.2 事件类型
+| Type | Description                                                       |
+| ---- | ----------------------------------------------------------------- |
+| 0x07 | Event trigger condition: temperature is greater than target value |
+| 0x08 | Event trigger condition: temperature is less than target value    |
+| 0x0A | Event trigger condition: humidity is greater than target value    |
+| 0x0B | Event trigger condition: humidity is less than target value       |
+| 0x0D | Event trigger condition: pressure is greater than target value    |
+| 0x0E | Event trigger condition: pressure is less than target value       |
 
-| 事件类型 | 说明               |
-| -------- | ------------------ |
-| 0x07     | 设置大于温度值上报 |
-| 0x08     | 设置小于温度值上报 |
-| 0x0A     | 设置大于湿度值上报 |
-| 0x0B     | 设置小于湿度值上报 |
-| 0x0D     | 设置大于气压值上报 |
-| 0x0E     | 设置小于气压值上报 |
+### 2.2.4 Request Network Time
 
-### 2.2.3 设备获取网络时间
+| Type   | ADDR | CMD  | LEN  | DATA      | CRC |
+| ------ | ---- | ---- | ---- | --------- | --- |
+| Send   | 0x01 | 0x45 | 0x00 | -         |     |
+| Accept | 0x01 | 0x45 | 0x04 | Timestamp |     |
 
-| 类型 | ADDR | CMD  | LEN  | DATA   | CRC |
-| ---- | ---- | ---- | ---- | ------ | --- |
-| 发送 | 0x01 | 0x45 | 0x00 | 空     |     |
-| 接收 | 0x01 | 0x45 | 0x04 | 时间戳 |     |
+Demo:
+Device send a network time request to server, server answers the request with time: 2019/5/27 17:2:17,
+the timestamp is: 1558947737 and corresponding message data is: 01 45 04 5C EB A7 99 2C AB
 
-如：
+### 2.2.5 Event Configuration Format
 
-设备上报请求时间命令，服务器收到后需下发时间戳 如下发时间：2019/5/27 17:2:17
-时间戳为：1558947737，对应下发协议：01 45 04 5C EB A7 99 2C AB
+Server sends event configuration to device, format is:
 
-### 2.2.4 事件下发
+| Type | ADDR | CMD  | LEN  | DATA       |              |            |          |              |
+| ---- | ---- | ---- | ---- | ---------- | ------------ | ---------- | -------- | ------------ |
+| Send | 0x01 | 0x42 | 0x0C | Event type | Repeat times | Begin time | End time | Target value |
+|      |      |      |      | 1 byte     | 1 byte       | 4 bytes    | 4 bytes  | 2 bytes      |
 
-设置传感器上报策略格式说明：
+### 2.2.5.1 Event type
 
-| 类型 | ADDR | CMD  | LEN  | DATA     |          |          |          |         |
-| ---- | ---- | ---- | ---- | -------- | -------- | -------- | -------- | ------- |
-| 发送 | 0x01 | 0x42 | 0x0C | 事件类型 | 重复次数 | 开始时间 | 结束时间 | 设置值  |
-|      |      |      |      | 占1字节  | 占1字节  | 占4字节  | 占4字节  | 占2字节 |
+Please refer to [2.2.3.2 Event Type](/main/private/lorawan#2232-实时数据格式说明)
 
-事件类型：参考**2.2.2 b 项说明**
+#### 2.2.5.2 Repeat times
 
-重复次数：1次：0x01, 每天：0xFE(暂定只有这两种状态) 该配置暂未使用，默认为0x01
+| Times             | Value | Description |
+| ----------------- | ----- | ----------- |
+| Once in all       | 0x01  | Default     |
+| Once time per day | 0xFE  |             |
 
-开始时间、结束时间：单位分钟，以0点0分作为基点进行分钟偏移。如设置7：00－10：00时间段，则对应为420分钟－600分钟。如为全时间段则设置开始时间等于结束时间即可，如设置开始时间为0，结束时间为0，即可表示一天全时段。
+#### 2.2.5.3 Begin and End Time
 
-注：设置值 温度需要放大10倍后正向偏移500，湿度放大10倍，气压放大100倍。
+Unit: minute. Value is the offset begin from 00:00 every day. For example:
+7:00 to 10:00 corresponding to 420 to 600  
+If you want get event alert all day, you can set both the begin and end time to 0.
 
-单位说明：
+#### 2.2.5.4 Target Value
 
-温度：摄氏度
+Temperature should be multiplied by 10 and add 500.  
+Humidity should be multiplied by 10.  
+Pressure should be multiplied by 100.
 
-湿度：%RH
+Unit:
+Temperature：C (Celsius degree)  
+Humidity: %RH  
+Pressure: kPa
 
-气压：kPa
-
-如：设置全时段，温度大于26度上报
+One demo for: Send a alert event when temperature is greater than 26C in all day.
 
 01 42 0C 07 01 00 00 00 00 00 00 00 00 02 F8 23 E4
 
-### 2.2.5 配置设置
+### 2.2.6 Data Report Configuration
 
-| 类型 | ADDR | CMD  | LEN  | DATA                    |                       |                                 |                               |                           |
-| ---- | ---- | ---- | ---- | ----------------------- | --------------------- | ------------------------------- | ----------------------------- | ------------------------- |
-| 发送 | 0x01 | 0x47 | 0x06 | 数据上报间隔2字节(分钟) | 数据采集间隔2字节(秒) | 蓝牙广播间隔2字节(秒, 保留未用) | 通知重复间隔2字节（保留未用） | 温度单位1字节（保留未用） |
+| Type | ADDR | CMD  | LEN  | DATA                          |                                   |                                               |                                       |                                 |
+| ---- | ---- | ---- | ---- | ----------------------------- | --------------------------------- | --------------------------------------------- | ------------------------------------- | ------------------------------- |
+| Send | 0x01 | 0x47 | 0x06 | Data report interval (minute) | Data collection interval (second) | BLE broadcast interval (second, not used now) | Repeat report interval (not used now) | Temperature unit (not used now) |
+|      |      |      |      | 2 bytes                       | 2 bytes                           | 2 bytes                                       | 2 bytes                               | 1 byte                          |
 
-如设置间隔时间：
-
-上报数据间隔：1小时
-
-数据采集间隔：15分钟
-
-保留未用项用0补全下发。
+Demo for: Report interval is 1 hour, data collection interval is 15 minutes.
 
 01 47 09 00 3C 03 84 00 00 00 00 00 28 5E

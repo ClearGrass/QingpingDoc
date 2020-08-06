@@ -18,7 +18,7 @@
 ### 1.2 Apply the App Key and App Secret of the Open API
 
 On  will add a Unix timestamp, you can apply the App Key and App Secret on the developer information management page.
-The App Key and App Secret are used for getting the Access Token which is necessary when calling the Open API. The detail about the Open API, please refer to [Open API](/main/openApi)
+The App Key and App Secret are used for getting the Access Token which is necessary when calling the Open API. The detail about the Open API, please refer to [Open API Specification](/main/openApi)
 
 ### 1.3 Register Webhooks（Optional）
 
@@ -50,13 +50,13 @@ Please register MQTT information on the developer information management page:
 
 ## 2. Description of Capability Support
 
-| Capability                       | Supported or not | Description                                                                                                                                                              |
-| -------------------------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Device Binding API               | No               | Only support binding device on [Qingping IoT](https://qingpingiot.com/)                                                                                                  |
-| Device Unbinding API             | No               | Only support unbinding device on [Qingping IoT](https://qingpingiot.com/)                                                                                                |
-| Data Report Interval Setting API | No               | Only support device setting on [Qingping IoT](https://qingpingiot.com/)                                                                                                  |
-| Device List API                  | Yes              | Get the device list of your account, refer to [开放接口说明文档 - 1.3 设备列表](/main/openApi#13-设备列表)                                                               |
-| Device Data API                  | Yes              | Get the device data of your account, refer to [开放接口说明文档 - 1.4 设备历史数据](/main/openApi#14-设备历史数据)                                                       |
-| Device Event API                 | Yes              | Get the device events of your account, refer to [开放接口说明文档 - 1.5 设备历史事件](/main/openApi#15-设备历史事件)                                                     |
-| Webhook Setting                  | Yes              | Register the Webhooks, Qingping Developer Platform will push the device data and events to you in near-real-time, refer to  [Webhook / MQTT 推送说明](/main/webhook)     |
-| MQTT Setting                     | Yes              | Register MQTT information，Qingping Developer Platform will push the device data and events to you in near-real-time, refer to  [Webhook / MQTT 推送说明](/main/webhook) |
+| Capability                       | Supported or not | Description                                                                                                                                                                        |
+| -------------------------------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Device Binding API               | No               | Only support binding device on [Qingping IoT](https://qingpingiot.com/)                                                                                                            |
+| Device Unbinding API             | No               | Only support unbinding device on [Qingping IoT](https://qingpingiot.com/)                                                                                                          |
+| Data Report Interval Setting API | No               | Only support device setting on [Qingping IoT](https://qingpingiot.com/)                                                                                                            |
+| Device List API                  | Yes              | Get the device list of your account, refer to [Open API Specification - 1.3 Device List](/main/openApi#13-device-list)                                                             |
+| Device Data API                  | Yes              | Get the device data of your account, refer to [Open API Specification - 1.4 Device History Data](/main/openApi#14-device-history-data)                                             |
+| Device Event API                 | Yes              | Get the device events of your account, refer to [Open API Specification - 1.5 Device History Event](/main/openApi#15-device-history-event)                                         |
+| Webhook Setting                  | Yes              | Register the Webhooks, Qingping Developer Platform will push the device data and events to you in near-real-time, refer to  [Webhook / MQTT Push Specification](/main/webhook)     |
+| MQTT Setting                     | Yes              | Register MQTT information，Qingping Developer Platform will push the device data and events to you in near-real-time, refer to  [Webhook / MQTT Push Specification](/main/webhook) |
