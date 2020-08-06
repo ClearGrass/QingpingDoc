@@ -1,3 +1,3 @@
 # 青萍科技开放平台
 
-## [青萍物联](https://github.com/ClearGrass/QingpingDoc/blob/master/iot_api.md)
+## [开放平台主页](https://developer.qingping.co/)
