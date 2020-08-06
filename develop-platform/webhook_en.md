@@ -42,7 +42,6 @@ To ensure the authenticity of every push request, Qingping Developer Platform wi
 | token     | string | Randomly generated string with length 36                  |
 | signature | string | String with hexadecimal digits generate by HMAC algorithm |
 
-验证签名方式：
 To verify the request is originating from Qingping Developer Platform you need to:
 
 - Concatenate timestamp and token values.
@@ -176,13 +175,13 @@ Device Data Sub-Parameter Specification
 | status    | string | C           | Status from sensor |
 
 Device Event Sub-Parameter Specification
-***注意：*** 不同类型的设备，events 的 alert_config.metric_name 支持的事件类型不一样，具体参考 [规范说明 - 2. 设备列表及属性支持说明](/main/specification#2-设备列表及属性支持说明)
+***Notice:*** Different product has different kinds of alert_config.metric_name for events, please refer to [规范说明 - 2. 设备列表及属性支持说明](/main/specification#2-设备列表及属性支持说明)
 
-| 参数名称    | 类型   | 出现要求 | 描述                                      |
-| ----------- | ------ | -------- | ----------------------------------------- |
-| metric_name | string | R        | Event type                                |
-| operator    | string | R        | Operator（gt:greater than, lt:less than） |
-| threshold   | int    | R        | User defined target                       |
+| Parameter   | Type   | Requirement | Description                               |
+| ----------- | ------ | ----------- | ----------------------------------------- |
+| metric_name | string | R           | Event type                                |
+| operator    | string | R           | Operator（gt:greater than, lt:less than） |
+| threshold   | int    | R           | User defined target                       |
 
 ### 3.2.2 Event Demo
 

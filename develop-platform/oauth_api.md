@@ -12,7 +12,7 @@
 
 ## 1. 获取 App Key 及 App Secret
 
-请使用青萍帐号登陆青萍开发者平台，申请 App Key 及 App Secret，然后可以在平台上查看相关信息。
+请使用青萍帐号登录青萍开发者平台，申请 App Key 及 App Secret，然后可以在平台上查看相关信息。
 
 ------
 

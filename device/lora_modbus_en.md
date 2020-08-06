@@ -1,13 +1,13 @@
-# 青萍温湿度气压计 LoRaWAN Modbus 协议
+# Qingping Temp & RH Barometer LoRaWAN Modbus Protocol
 
-- [青萍温湿度气压计 LoRaWAN Modbus 协议](#青萍温湿度气压计-lorawan-modbus-协议)
-  - [1．协议通信说明](#1协议通信说明)
-  - [2．协议命令格式说明](#2协议命令格式说明)
-    - [2.1 协议格式](#21-协议格式)
-    - [2.2 命令详解](#22-命令详解)
-    - [2.2.1 CMD 定义](#221-cmd-定义)
-    - [2.2.2 传感器数据上报](#222-传感器数据上报)
-      - [2.2.2.1 历史数据格式说明](#2221-历史数据格式说明)
+- [Qingping Temp & RH Barometer LoRaWAN Modbus Protocol](#qingping-temp--rh-barometer-lorawan-modbus-protocol)
+  - [1．Protocol Specification](#1protocol-specification)
+  - [2．Protocol Command Format Specification](#2protocol-command-format-specification)
+    - [2.1 2．Protocol Format](#21-2protocol-format)
+    - [2.2 Command Specification](#22-command-specification)
+    - [2.2.1 CMD List](#221-cmd-list)
+    - [2.2.2 Sensor Data Report](#222-sensor-data-report)
+      - [2.2.2.1 History data format](#2221-history-data-format)
       - [2.2.2.2 实时数据格式说明](#2222-实时数据格式说明)
     - [2.2.2 事件上报](#222-事件上报)
       - [2.2.2.1 传感器数据格式](#2221-传感器数据格式)
@@ -16,45 +16,45 @@
     - [2.2.4 事件下发](#224-事件下发)
     - [2.2.5 配置设置](#225-配置设置)
 
-## 1．协议通信说明
+## 1．Protocol Specification
 
-- 协议采用类 Modbus-RTU 数据格式，数据可由设备主动上报或请求
-- 所有通信内容都必需转 base64 后再进行通信（以下协议举例中仅以原 HEX 格式数据举例，但默认通信还需转成 base64 再进行通信）
+- Protocol applies Modbus-RTU like data format, device can report data or make requests itself.
+- All data need to be encoded with Base64 (Notice: demos below use hexadecimal digits as examples, but in actual environment you will see the Base64 encoded data)
 
-## 2．协议命令格式说明
+## 2．Protocol Command Format Specification
 
-### 2.1 协议格式
+### 2.1 2．Protocol Format
 
-| 协议格式 | ADDR | CMD    | LEN      | DATA     | CRC  |
-| -------- | ---- | ------ | -------- | -------- | ---- |
-|          | 地址 | 功能码 | 数据长度 | 数据内容 | 校验 |
-| 字节数   | 1    | 1      | 1        | N        | 2    |
+|             | ADDR         | CMD          | LEN         | DATA | CRC       |
+| ----------- | ------------ | ------------ | ----------- | ---- | --------- |
+| Description | Address code | Command code | Data length | data | Check bit |
+| Byte length | 1            | 1            | 1           | N    | 2         |
 
-说明：
+Note:
 
-1. 所有内容都以高字节在前低字节在后
-2. 地址码固定为 0x01
+1. Byte order is Little-Endian
+2. Address code is fixed to 0x01
 
-### 2.2 命令详解
+### 2.2 Command Specification
 
-### 2.2.1 CMD 定义
+### 2.2.1 CMD List
 
-| CMD  | 说明                        |
-| ---- | --------------------------- |
-| 0xFF | 应答命令                    |
-| 0x41 | 设备上报数据                |
-| 0x42 | 设备上报事件配置            |
-| 0x43 | 设备获取事件/服务器下发事件 |
-| 0x44 | 设备上报事件                |
-| 0x45 | 设备获取网络时间（LoRa）    |
-| 0x46 | 设备获取固件（Wi-Fi）       |
-| 0x47 | 设备上报配置/服务器下发配置 |
+| CMD  | Description                                                           |
+| ---- | --------------------------------------------------------------------- |
+| 0xFF | Answer command                                                        |
+| 0x41 | Device reports data                                                   |
+| 0x42 | Device reports event configuration                                    |
+| 0x43 | Device gets event from server                                         |
+| 0x44 | Device reports event                                                  |
+| 0x45 | Device requests network time (LoRa)                                   |
+| 0x46 | Device requests new firmware (Wi-Fi)                                  |
+| 0x47 | Server pushes configuration to device or device reports configuration |
 
-应答格式：
+Response Format:
 
 <table>
     <tr>
-        <th>协议格式</th>
+        <th>Type</th>
         <th>ADDR</th>
         <th>CMD</th>
         <th>LEN</th>
@@ -62,35 +62,35 @@
         <th>CRC</th>
     </tr>
     <tr>
-        <td rowspan="3">发送</td>
+        <td rowspan="3">Response</td>
         <td rowspan="3">0x01</td>
         <td rowspan="3">0xFF</td>
         <td rowspan="3">0x02</td>
-        <td>应答的功能码</td>
-        <td>应答状态</td>
+        <td>Function code of response</td>
+        <td>Response status</td>
         <td rowspan="3"> - </td>
     </tr>
     <tr>
         <td></td>
-        <td>成功：0x00</td>
+        <td>Success: 0x00</td>
     </tr>
     <tr>
         <td></td>
-        <td>失败：0x01</td>
+        <td>Failed: 0x01</td>
     </tr>
 </table>
 
-说明：
+Note:
 
-1. 应答命令只在 Wi-Fi 和阿里 NB-Iot 版本上存在；
-2. 非读命令都应返回应答（如：设备上报数据、设备上报设置参数、设备上报事件等为非读命令）
-3. 读命令在无有效数据返回时，应当返回失败应答。（如：获取设置参数等为读命令）
+1. Response command is only supported on devices of Wi-Fi version and NB-Iot version.
+2. Response should be make for all non-read requests.
+3. For read requests, failed response should be make when no data is available.
 
-### 2.2.2 传感器数据上报
+### 2.2.2 Sensor Data Report
 
 <table>
     <tr>
-        <th>类型</th>
+        <th>Type</th>
         <th>ADDR</th>
         <th>CMD</th>
         <th>LEN</th>
@@ -98,44 +98,44 @@
         <th>CRC</th>
     </tr>
     <tr>
-        <td rowspan="3">发送</td>
+        <td rowspan="3">Report</td>
         <td rowspan="3">0x01</td>
         <td rowspan="3">0x41</td>
         <td rowspan="3">0x06-0x24</td>
-        <td>数据类型</td>
-        <td colspan="3">说明</td>
+        <td>Data type</td>
+        <td colspan="3">Specification</td>
         <td rowspan="3"> - </td>
     </tr>
     <tr>
         <td>0x00</td>
-        <td colspan="3">历史数据</td>
+        <td colspan="3">History data</td>
     </tr>
     <tr>
         <td>0x01</td>
-        <td>时间戳4字节</td>
-        <td>实时数据6字节</td>
-        <td>版本号10字节</td>
+        <td>Timestamp(4 bytes)</td>
+        <td>Real-time data(6 bytes)</td>
+        <td>Version code(10 bytes)</td>
     </tr>
 </table>
 
-#### 2.2.2.1 历史数据格式说明
+#### 2.2.2.1 History data format
 
-一条完整历史数据上报格式如下：
+Deme for one complete history data is:
 
 01 41 25 00 5C 77 88 B6 00 05 2F C2 9A 27 66 4E 2F C2 9A 27 66 4E 2F C2 9A 27 66
 4E 2F C2 9A 27 66 4E 2F C2 9A 27 66 4E 48 8C
 
-历史数据解析：
+Analysis of history data:
 
-| 字节序号                  | 说明                                                                                 | 数值                                                                                                                                                                                                                        |
+| Byte Order Number         | Description                                                                          | Value                                                                                                                                                                                                                       |
 | ------------------------- | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1                         | 设备地址                                                                             | 0x01                                                                                                                                                                                                                        |
-| 2                         | 数据上报功能码                                                                       | 0x41                                                                                                                                                                                                                        |
-| 3                         | 数据长度                                                                             | 0x25                                                                                                                                                                                                                        |
-| 4                         | 数据类型(历史数据)                                                                   | 0x00                                                                                                                                                                                                                        |
-| 5 - 8                     | 时间戳                                                                               | 0x5C7788B6                                                                                                                                                                                                                  |
-| 9 – 10                    | 数据存储间隔(单位秒)                                                                 | 0x0005                                                                                                                                                                                                                      |
-| 11 – 16                   | 第1组传感器数据                                                                      | 第1－3字节为温湿度：0x2FC29A, 温度湿度各占12bit, 高12bit为温度，0x02FC, 温度值正向偏移500，实际值为0x02FC-500=264(放大10倍)，低12bit为湿度：0x29A(放大10倍) <br>第4－5字节为气压：0x2766(放大100倍) <br>第6字节为电量：0x4E |
+| 1                         | Device address                                                                       | 0x01                                                                                                                                                                                                                        |
+| 2                         | Data report code                                                                     | 0x41                                                                                                                                                                                                                        |
+| 3                         | Data length                                                                          | 0x25                                                                                                                                                                                                                        |
+| 4                         | Data type (history data)                                                             | 0x00                                                                                                                                                                                                                        |
+| 5 - 8                     | Timestamp                                                                            | 0x5C7788B6                                                                                                                                                                                                                  |
+| 9 – 10                    | Data storage interval (seconds)                                                      | 0x0005                                                                                                                                                                                                                      |
+| 11 – 16                   | Sensor data for group 1                                                              | 第1－3字节为温湿度：0x2FC29A, 温度湿度各占12bit, 高12bit为温度，0x02FC, 温度值正向偏移500，实际值为0x02FC-500=264(放大10倍)，低12bit为湿度：0x29A(放大10倍) <br>第4－5字节为气压：0x2766(放大100倍) <br>第6字节为电量：0x4E |
 | 17－22                    | 第2组传感器数据                                                                      |                                                                                                                                                                                                                             |
 | 每6个字节为一组传感器数据 | LoRa：一帧历史数据最多有5组传感器数据 Wi-Fi/NB-Iot: 一帧历史数据最多有40组传感器数据 |                                                                                                                                                                                                                             |
 | 41 - 42                   | 校验码                                                                               | 0x488C                                                                                                                                                                                                                      |

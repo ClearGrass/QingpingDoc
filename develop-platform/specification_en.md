@@ -128,9 +128,3 @@ Every request need an Access Token in the header. How to get the Access Token, p
 | prob_temperature | temperature alert of external sensor | gt/lt    | number    | temperature is bigger or less than the threshold                                                                                                                                  |            &#x0221A;             |                              |                      |
 
 ***Explain:*** &#x0221A; indicates that this property is supported by the product
-
-拿到以后少一格电；不久又满格了；最后一格电量使用很久
-虚电
-电量曲线采集和拟合
-
-8.15号 magpie
