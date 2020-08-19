@@ -71,6 +71,8 @@ LinkWAN 版产品：支持阿里 IoT 接入。
 
 
 ## 5. 数据解析 DEMO
+[Java 版数据解析 Demo](https://qingping.feishu.cn/docs/doccnsQEUKIl4ySLumxSqYktH4d)
+
 
 ## 6. Q&A
   **Q：个人或企业都可以使用设备私有化服务吗？**
