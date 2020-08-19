@@ -67,6 +67,8 @@ LinkWAN 版产品：支持阿里 IoT 接入。
 
 
 ## 4. 数据上报协议
+<a href="https://qingping.feishu.cn/docs/doccnsQEUKIl4ySLumxSqYktH4d" target="_blank">青萍温湿度气压计数据上报协议</a>
+
 [青萍温湿度气压计数据上报协议](https://qingping.feishu.cn/docs/doccnsQEUKIl4ySLumxSqYktH4d)
 
 
