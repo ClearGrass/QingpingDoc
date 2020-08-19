@@ -129,4 +129,4 @@ LinkWAN 版产品：支持阿里 IoT 接入。
 ----
   **Q：样机购买渠道？**
   
-  A：可自行到 [淘宝天猫青萍旗舰店选购](https://cleargrass.tmall.com/)
+  A：可自行到 [淘宝天猫青萍旗舰店](https://cleargrass.tmall.com/) 选购
