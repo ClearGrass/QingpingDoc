@@ -373,27 +373,7 @@
 
 ### 3.19 修改 MQTT 连接信息
 
-```json
-{
-    "type": "16",
-    "desc": "change env",
-    "host": { //Mqtt连接信息
-        "host": "127.0.0.1",
-        "port": 1886,
-        "user": "root",
-        "password":"*******",
-        "client_id":"SnowSE_ 582D340005EE",
-         "sub_topic": "SnowSE/down/582D340005EE",
-         "pub_topic": "SnowSE/up/582D340005EE"
-    },
-    "setting": { //采集间隔和上报频率
-           "report_interval": 60,
-           "collect_interval": 10
-    },
-    "report_fileds": "battery,temperature,humidity,pm25,co2,tvoc", //需要上报的传感器字段名称
-    "timestamp": 1592192453
-}
-```
+暂时不开放
 
 ### 3.20 上报设备日志
 
