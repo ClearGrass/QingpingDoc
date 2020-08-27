@@ -347,7 +347,7 @@ https://apis.cleargrass.com/v1/apis/devices/events?mac=582D3446029C&end_time=157
 | &emsp;&emsp;timestamp    | object | R        | 时间戳                         |
 | &emsp;&emsp;&emsp;value  | float  | R        | 数值                           |
 | &emsp;&emsp;&emsp;level  | float  | C        | 等级                           |
-| &emsp;&emsp;&emsp;status | float  | C        | 状态                           |
+| &emsp;&emsp;&emsp;status | float  | C        | 状态（1-触发，2-解除）         |
 | &emsp;alert_config       | object | C        | 触发条件                       |
 | &emsp;&emsp;metric_name  | string | R        | 事件属性（温度、湿度、气压等） |
 | &emsp;&emsp;operator     | string | R        | 操作符（大于gt、小于lt）       |
