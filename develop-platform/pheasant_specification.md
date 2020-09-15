@@ -13,7 +13,7 @@
 ### 1.1 帐号注册
 
 - 请注册青萍物联帐号，注册地址为：[青萍物联](https://qingpingiot.com/)
-- 请使用青萍物联帐号登陆青萍开发者平台，平台地址为：[青萍开发者平台](https://developers.qingping.co/)
+- 请使用青萍物联帐号登录青萍开发者平台，平台地址为：[青萍开发者平台](https://developers.qingping.co/)
 
 ### 1.2 申请开放接口 App Key 及 App Secret
 
