@@ -30,13 +30,13 @@ Please use Qingping account to log in the Qingping Developer Platform, apply the
 
 Parameters for Access Token request of OAuth 2.0 Client Credentials Grant Type are as follows.
 
-| Parameter            | Description              | Value                                                                                                       |
-| -------------------- | ------------------------ | ----------------------------------------------------------------------------------------------------------- |
-| Method               | HTTP request method      | POST                                                                                                        |
-| Content-Type         | Header request parameter | application/x-www-form-urlencoded                                                                           |
-| Authorization: Basic | Header request parameter | client_id:client_secret where client_id is App Key and client_secret is App Secret, and encoded with Base64 |
-| grant_type           | Body request parameter   | client_credentials                                                                                          |
-| scope                | Body request parameter   | device_full_access                                                                                          |
+| Parameter            | Description              | Value                                                                                                                       |
+| -------------------- | ------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
+| Method               | HTTP request method      | POST                                                                                                                        |
+| Content-Type         | Header request parameter | application/x-www-form-urlencoded                                                                                           |
+| Authorization: Basic | Header request parameter | "Basic Base64(client_id:client_secret)" where client_id is App Key and client_secret is App Secret, and encoded with Base64 |
+| grant_type           | Body request parameter   | client_credentials                                                                                                          |
+| scope                | Body request parameter   | device_full_access                                                                                                          |
 
 Response is in Json format with these values:
 
@@ -51,9 +51,9 @@ Response is in Json format with these values:
 
 Please put the Access Token in the request header for permission verification.
 
-| Parameter             | Description              | Value        |
-| --------------------- | ------------------------ | ------------ |
-| Authorization: Bearer | Header request parameter | Access Token |
+| Parameter     | Description              | Value                 |
+| ------------- | ------------------------ | --------------------- |
+| Authorization | Header request parameter | Bearer {Access Token} |
 
 ## 2.4 Access Token Effective Time Specification
 

@@ -30,13 +30,13 @@
 
 获取 Access Token 采用 OAuth 2.0 的 Client Credentials 方式进行获取，请求参数说明如下：
 
-| 参数                 | 说明            | 值                                                                         |
-| -------------------- | --------------- | -------------------------------------------------------------------------- |
-| Method               | HTTP 请求方法   | POST                                                                       |
-| Content-Type         | Header 请求参数 | application/x-www-form-urlencoded                                          |
-| Authorization: Basic | Header 请求参数 | client_id:client_secret 分别对应 App Key 与 App Secret， 需进行 Base64编码 |
-| grant_type           | Body 请求参数   | client_credentials                                                         |
-| scope                | Body 请求参数   | device_full_access                                                         |
+| 参数          | 说明            | 值                                                                                                                         |
+| ------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| Method        | HTTP 请求方法   | POST                                                                                                                       |
+| Content-Type  | Header 请求参数 | application/x-www-form-urlencoded                                                                                          |
+| Authorization | Header 请求参数 | "Basic Base64(client_id:client_secret)" 说明：client_id, client_secret 分别对应 App Key 与 App Secret， 需进行 Base64 编码 |
+| grant_type    | Body 请求参数   | client_credentials                                                                                                         |
+| scope         | Body 请求参数   | device_full_access                                                                                                         |
 
 返回结果为Json格式，各项键值对说明如下：
 
@@ -51,9 +51,9 @@
 
 请将获取到的 Access Token 放入各请求的Header中，用于权限验证。
 
-| 参数                  | 说明            | 值           |
-| --------------------- | --------------- | ------------ |
-| Authorization: Bearer | Header 请求参数 | Access Token |
+| 参数          | 说明            | 值                    |
+| ------------- | --------------- | --------------------- |
+| Authorization | Header 请求参数 | Bearer {Access Token} |
 
 ## 2.4 Access Token 有效期说明
 
