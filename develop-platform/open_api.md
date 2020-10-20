@@ -74,7 +74,8 @@ https://apis.cleargrass.com/v1/apis/devices
 | &emsp;created_at  | string | R        | 设备注册时间                                               |
 | &emsp;product     | object | R        | 产品信息                                                   |
 | &emsp;&emsp;id    | string | C        | 产品ID（参考 [规范说明](/main/specification#21-产品列表)） |
-| &emsp;&emsp;desc  | string | C        | 产品描述                                                   |
+| &emsp;&emsp;name  | string | C        | 产品名称                                                   |
+| &emsp;&emsp;en_name | string | C        | 产品英文名称                                                   |
 | data              | object | C        | 设备数据                                                   |
 | &emsp;battery     | object | C        | 电量                                                       |
 | &emsp;humidity    | object | C        | 湿度                                                       |
@@ -94,7 +95,7 @@ https://apis.cleargrass.com/v1/apis/devices
         "mac": "582D34460442",
         "version": "1.0.1_0049",
         "created_at": 1573034091,
-        "product": {"id":"10", "desc":"青萍温湿度气压计"}
+        "product": {"id": 1101, "name": "青萍温湿度气压计","en_name": "Qingping Temp & RH Barometer"}
     },
     "data":{
         "battery": {"value": 70},
@@ -154,6 +155,7 @@ https://apis.cleargrass.com/v1/apis/devices
 | 参数名称  | 类型 | 出现要求 | 描述                                            |
 | :-------- | :--- | :------- | :---------------------------------------------- |
 | timestamp | int  | R        | 毫秒级时间戳(13位) 20s内有效,同一个请求不可重复 |
+| group_id  | int  | O        | 分组id    |
 | offset    | int  | O        | 偏移量                                          |
 | limit     | int  | O        | 最大返回数据条数 不得超过50                     |
 
@@ -172,6 +174,8 @@ https://apis.cleargrass.com/v1/apis/devices?timestamp=1596527411689
 | &emsp;info               | object   | R        | 设备信息                                                   |
 | &emsp;&emsp;name         | string   | R        | 设备名称                                                   |
 | &emsp;&emsp;mac          | string   | R        | 设备mac地址                                                |
+| &emsp;&emsp;status       | object   | C        | 状态                                               |
+| &emsp;&emsp;&emsp;offline| bool     | C        | 状态 （True表示离线False表示在线）                                              |
 | &emsp;&emsp;version      | string   | R        | 设备版本                                                   |
 | &emsp;&emsp;created_at   | string   | R        | 设备注册时间                                               |
 | &emsp;&emsp;product      | object   | R        | 产品信息                                                   |
@@ -204,9 +208,14 @@ https://apis.cleargrass.com/v1/apis/devices?timestamp=1596527411689
                 "mac": "582D34460442",
                 "version": "1.0.1_0049",
                 "created_at": 1573034091,
-                "status":["offline"],
-                "product": {"id":1001, "desc":"青萍温湿度气压计"}
-            }
+                "status":{
+                    "offline": false,
+                    "altering": false
+                },
+                "group_id": 11,
+                "group_name": "卡卡罗特",
+                "product": {"id": 1101, "name": "青萍温湿度气压计","en_name": "Qingping Temp & RH Barometer"}
+            },
             "data":{
                 "battery": {"value": 70},
                 "humidity": {"value": 22.2},
@@ -221,9 +230,14 @@ https://apis.cleargrass.com/v1/apis/devices?timestamp=1596527411689
                 "mac": "582D34460442",
                 "version": "1.0.1_0049",
                 "created_at": 1573034091,
-                "status":["offline"],
-                "product": {"id":1001, "desc":"青萍温湿度气压计"}
-            }
+                "status":{
+                    "offline": false,
+                    "altering": false
+                },
+                "group_id": 11,
+                "group_name": "卡卡罗特",
+                "product": {"id": 1101, "name": "青萍温湿度气压计","en_name": "Qingping Temp & RH Barometer"}
+            },
             "data":{
                 "battery": {"value": 70},
                 "humidity": {"value": 22.2},
@@ -425,5 +439,65 @@ https://apis.cleargrass.com/v1/apis/devices/settings
     "report_interval": 10,
     "collect_interval": 5,
     "timestamp": 1596527411689
+}
+```
+
+### 1.7 分组列表
+
+- **接口说明：** 分组列表
+- **接口方法：** GET
+- **接口地址：** /v1/apis/devices/groups
+
+#### 1.7.1 请求头
+
+| 参数名称      | 参数值           | 描述                                                           |
+| :------------ | :--------------- | :------------------------------------------------------------- |
+| Authorization | token            | 格式为 "Bearer YourToken"，注意 Bearer 与 token 之间有一个空格 |
+| Content-Type  | application/json | 固定值                                                         |
+
+#### 1.7.2 请求参数
+
+| 参数名称         | 类型     | 出现要求 | 描述                                            |
+| :--------------- | :------- | :------- | :---------------------------------------------- |
+| timestamp        | int      | R        | 毫秒级时间戳(13位) 20s内有效,同一个请求不可重复 |
+
+请求示例：
+
+```sh
+https://apis.cleargrass.com/v1/apis/devices/groups?timestamp=1602468406039
+```
+
+#### 1.7.3 返回结果
+
+参数名称						    |类型		|出现要求	    |描述  
+:----						    |:---		|:------	|:---
+total				            |int		|R			|分组总数
+groups				            |[]object	|R			|分组列表
+&emsp;id				        |int	    |R			|分组id
+&emsp;name				        |string		|R			|分组名称
+
+示例：
+
+```json
+{
+    "total": 4,
+    "groups": [
+        {
+            "id": 1381,
+            "name": "卡卡罗特"
+        },
+        {
+            "id": 1382,
+            "name": "贝吉塔"
+        },
+        {
+            "id": -11,
+            "name": "plus"
+        },
+        {
+            "id": -12,
+            "name": "devPlatform"
+        }
+    ]
 }
 ```
