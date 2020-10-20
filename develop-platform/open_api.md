@@ -174,13 +174,16 @@ https://apis.cleargrass.com/v1/apis/devices?timestamp=1596527411689
 | &emsp;info               | object   | R        | 设备信息                                                   |
 | &emsp;&emsp;name         | string   | R        | 设备名称                                                   |
 | &emsp;&emsp;mac          | string   | R        | 设备mac地址                                                |
+| &emsp;&emsp;group_id     | string   | R        | 分组id                                                |
+| &emsp;&emsp;group_name   | string   | R        | 分组名称                                                |
 | &emsp;&emsp;status       | object   | C        | 状态                                               |
 | &emsp;&emsp;&emsp;offline| bool     | C        | 状态 （True表示离线False表示在线）                                              |
 | &emsp;&emsp;version      | string   | R        | 设备版本                                                   |
 | &emsp;&emsp;created_at   | string   | R        | 设备注册时间                                               |
 | &emsp;&emsp;product      | object   | R        | 产品信息                                                   |
 | &emsp;&emsp;&emsp;id     | string   | C        | 产品ID（参考 [规范说明](/main/specification#21-产品列表)） |
-| &emsp;&emsp;&emsp;desc   | string   | C        | 产品描述                                                   |
+| &emsp;&emsp;&emsp;name   | string   | C        | 产品名称                                                   |
+| &emsp;&emsp;&emsp;en_name   | string   | C        | 产品英文名称                                                   |
 | &emsp;data               | object   | C        | 设备数据                                                   |
 | &emsp;&emsp;battery      | object   | C        | 电量                                                       |
 | &emsp;&emsp;humidity     | object   | C        | 湿度                                                       |
