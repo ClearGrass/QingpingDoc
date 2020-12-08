@@ -68,7 +68,7 @@ https://apis.cleargrass.com/v1/apis/devices
 | :---------------- | :----- | :---------- | :--------------------------------------------------------------------------------------------- |
 | info              | object | R           | Device information                                                                             |
 | &emsp;name        | string | R           | Device name                                                                                    |
-| &emsp;mac         | string | R           | Device Mac address                                                                             |
+| &emsp;mac         | string | R           | Device MAC address                                                                             |
 | &emsp;version     | string | R           | Device firmware version                                                                        |
 | &emsp;created_at  | string | R           | Device register time                                                                           |
 | &emsp;product     | object | R           | Product information                                                                            |
@@ -122,7 +122,7 @@ Demo:
 
 | Parameter | Type     | Requirement | Description                                                              |
 | :-------- | :------- | :---------- | :----------------------------------------------------------------------- |
-| mac       | []string | R           | Mac address                                                              |
+| mac       | []string | R           | MAC address                                                              |
 | timestamp | int      | R           | Millisecond timestamp, unique for every request and expires in 20 second |
 
 Request Demo:
@@ -169,7 +169,7 @@ https://apis.cleargrass.com/v1/apis/devices?timestamp=1573612191
 | devices                  | []object | R           | Device data                                                                                    |
 | &emsp;info               | object   | R           | Device information                                                                             |
 | &emsp;&emsp;name         | string   | R           | Device name                                                                                    |
-| &emsp;&emsp;mac          | string   | R           | Device Mac address                                                                             |
+| &emsp;&emsp;mac          | string   | R           | Device MAC address                                                                             |
 | &emsp;&emsp;version      | string   | R           | Device firmware version                                                                        |
 | &emsp;&emsp;created_at   | string   | R           | Device register time                                                                           |
 | &emsp;&emsp;product      | object   | R           | Product information                                                                            |
@@ -250,7 +250,7 @@ Demo:
 
 | Parameter  | Type   | Requirement | Description                                                              |
 | :--------- | :----- | :---------- | :----------------------------------------------------------------------- |
-| mac        | string | R           | Device Mac                                                               |
+| mac        | string | R           | Device MAC address                                                       |
 | start_time | int    | R           | Start time for the data                                                  |
 | end_time   | int    | R           | End time for the data                                                    |
 | timestamp  | int    | R           | Millisecond timestamp, unique for every request and expires in 20 second |
@@ -318,7 +318,7 @@ Demo:
 
 | Parameter        | Type   | Requirement | Description                                                              |
 | :--------------- | :----- | :---------- | :----------------------------------------------------------------------- |
-| &emsp;mac        | string | R           | Device Mac                                                               |
+| &emsp;mac        | string | R           | Device MAC address                                                       |
 | &emsp;start_time | int    | R           | Start time for the events                                                |
 | &emsp;end_time   | int    | R           | End time for the events                                                  |
 | &emsp;timestamp  | int    | R           | Millisecond timestamp, unique for every request and expires in 20 second |
@@ -408,9 +408,9 @@ Demo:
 
 | Parameter        | Type     | Requirement | Description                                                                             |
 | :--------------- | :------- | :---------- | :-------------------------------------------------------------------------------------- |
-| mac              | []string | R           | Mac address                                                                             |
+| mac              | []string | R           | MAC address                                                                             |
 | report_interval  | int      | R           | Report interval (second), minimum is 10 second, an integer multiple of collect_interval |
-| collect_interval | int      | R           | data collection and report interval (second)                                            |
+| collect_interval | int      | R           | data acquisition and report interval (second)                                           |
 | timestamp        | int      | R           | Millisecond timestamp, unique for every request and expires in 20 second                |
 
 Request Demo:

@@ -246,11 +246,11 @@ One demo for: Send a alert event when temperature is greater than 26C in all day
 
 ### 2.2.6 Data Report Configuration
 
-| Type | ADDR | CMD  | LEN  | DATA                          |                                   |                                               |                                       |                                 |
-| ---- | ---- | ---- | ---- | ----------------------------- | --------------------------------- | --------------------------------------------- | ------------------------------------- | ------------------------------- |
-| Send | 0x01 | 0x47 | 0x06 | Data report interval (minute) | Data collection interval (second) | BLE broadcast interval (second, not used now) | Repeat report interval (not used now) | Temperature unit (not used now) |
-|      |      |      |      | 2 bytes                       | 2 bytes                           | 2 bytes                                       | 2 bytes                               | 1 byte                          |
+| Type | ADDR | CMD  | LEN  | DATA                          |                                    |                                               |                                       |                                 |
+| ---- | ---- | ---- | ---- | ----------------------------- | ---------------------------------- | --------------------------------------------- | ------------------------------------- | ------------------------------- |
+| Send | 0x01 | 0x47 | 0x06 | Data report interval (minute) | Data acquisition interval (second) | BLE broadcast interval (second, not used now) | Repeat report interval (not used now) | Temperature unit (not used now) |
+|      |      |      |      | 2 bytes                       | 2 bytes                            | 2 bytes                                       | 2 bytes                               | 1 byte                          |
 
-Demo for: Report interval is 1 hour, data collection interval is 15 minutes.
+Demo for: Report interval is 1 hour, data acquisition interval is 15 minutes.
 
 01 47 09 00 3C 03 84 00 00 00 00 00 28 5E

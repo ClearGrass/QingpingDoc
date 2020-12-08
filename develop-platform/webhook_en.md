@@ -62,7 +62,7 @@ When the device reports data to Qingping Developer Platform, the platform will p
 
 | Parameter         | Type   | Requirement | Description                                                               |
 | ----------------- | ------ | ----------- | ------------------------------------------------------------------------- |
-| info.mac          | string | R           | Mac address of the device                                                 |
+| info.mac          | string | R           | MAC address of the device                                                 |
 | info.product.id   | int    | R           | Product code of the device                                                |
 | info.product.desc | string | R           | Product name of the device                                                |
 | info.name         | string | R           | User defined device name                                                  |
@@ -139,7 +139,7 @@ When the device reports events(include alerts) to Qingping Developer Platform, t
 
 | Parameter         | Type   | Requirement | Description                                                                 |
 | ----------------- | ------ | ----------- | --------------------------------------------------------------------------- |
-| info.mac          | string | R           | Mac address of the device                                                   |
+| info.mac          | string | R           | MAC address of the device                                                   |
 | info.product.id   | int    | R           | Product code of the device                                                  |
 | info.product.desc | string | R           | Product name of the device                                                  |
 | info.name         | string | R           | User defined device name                                                    |
