@@ -27,6 +27,10 @@ The support of API SDK please refer to [Platform Access SDK Specification - 1. O
     - [1.6 Device Settings Modification](#16-device-settings-modification)
       - [1.6.1 Request Header](#161-request-header)
       - [1.6.2 Request Parameter](#162-request-parameter)
+    - [1.7 Group List](#17-group-list)
+      - [1.7.1 Request Header](#171-request-header)
+      - [1.7.2 Request Parameter](#172-request-parameter)
+      - [1.7.3 Response](#173-response)
 
 ## 1. Device API
 
@@ -64,23 +68,24 @@ https://apis.cleargrass.com/v1/apis/devices
 
 #### 1.1.3 Response Formate
 
-| Parameter         | Type   | Requirement | Description                                                                                    |
-| :---------------- | :----- | :---------- | :--------------------------------------------------------------------------------------------- |
-| info              | object | R           | Device information                                                                             |
-| &emsp;name        | string | R           | Device name                                                                                    |
-| &emsp;mac         | string | R           | Device MAC address                                                                             |
-| &emsp;version     | string | R           | Device firmware version                                                                        |
-| &emsp;created_at  | string | R           | Device register time                                                                           |
-| &emsp;product     | object | R           | Product information                                                                            |
-| &emsp;&emsp;id    | string | C           | Product ID, refer to [Specification - 2.1 Products List](/main/specification#21-products-list) |
-| &emsp;&emsp;desc  | string | C           | Product Description                                                                            |
-| data              | object | C           | Device data                                                                                    |
-| &emsp;battery     | object | C           | Battery                                                                                        |
-| &emsp;humidity    | object | C           | Humidity                                                                                       |
-| &emsp;pressure    | object | C           | Pressure                                                                                       |
-| &emsp;temperature | object | C           | Temperature                                                                                    |
-| &emsp;timestamp   | object | C           | Time                                                                                           |
-| &emsp;&emsp;value | float  | C           | Value                                                                                          |
+| Parameter           | Type   | Requirement | Description                                                                                    |
+| :------------------ | :----- | :---------- | :--------------------------------------------------------------------------------------------- |
+| info                | object | R           | Device information                                                                             |
+| &emsp;name          | string | R           | Device name                                                                                    |
+| &emsp;mac           | string | R           | Device MAC address                                                                             |
+| &emsp;version       | string | R           | Device firmware version                                                                        |
+| &emsp;created_at    | string | R           | Device register time                                                                           |
+| &emsp;product       | object | R           | Product information                                                                            |
+| &emsp;&emsp;id      | string | C           | Product ID, refer to [Specification - 2.1 Products List](/main/specification#21-products-list) |
+| &emsp;&emsp;name    | string | C           | Product name                                                                                   |
+| &emsp;&emsp;en_name | string | C           | Product English name                                                                           |
+| data                | object | C           | Device data                                                                                    |
+| &emsp;battery       | object | C           | Battery                                                                                        |
+| &emsp;humidity      | object | C           | Humidity                                                                                       |
+| &emsp;pressure      | object | C           | Pressure                                                                                       |
+| &emsp;temperature   | object | C           | Temperature                                                                                    |
+| &emsp;timestamp     | object | C           | Time                                                                                           |
+| &emsp;&emsp;value   | float  | C           | Value                                                                                          |
 
 ***Notice:*** Different product has different kinds of data sub-parameters, please refer to [Specification - 2. Products List and Support Note](/main/specification#2-products-list-and-support-note)
 
@@ -93,7 +98,7 @@ Demo:
         "mac": "582D34460442",
         "version": "1.0.1_0049",
         "created_at": 1573034091,
-        "product": {"id":"10", "desc":"青萍温湿度气压计"}
+        "product": {"id":"10", "name": "青萍温湿度气压计", "en_name": "Qingping Temp & RH Barometer"}
     },
     "data":{
         "battery": {"value": 70},
@@ -152,6 +157,7 @@ https://apis.cleargrass.com/v1/apis/devices
 | Parameter | Type | Requirement | Description                                                              |
 | :-------- | :--- | :---------- | :----------------------------------------------------------------------- |
 | timestamp | int  | R           | Millisecond timestamp, unique for every request and expires in 20 second |
+| group_id  | int  | O           | Grout ID                                                                 |
 | offset    | int  | O           | Offset for the list                                                      |
 | limit     | int  | O           | Max return number of devices, no bigger than 50                          |
 
@@ -163,30 +169,35 @@ https://apis.cleargrass.com/v1/apis/devices?timestamp=1573612191
 
 #### 1.3.3 Response Formate
 
-| Parameter                | Type     | Requirement | Description                                                                                    |
-| :----------------------- | :------- | :---------- | :--------------------------------------------------------------------------------------------- |
-| total                    | int      | R           | Total number of devices                                                                        |
-| devices                  | []object | R           | Device data                                                                                    |
-| &emsp;info               | object   | R           | Device information                                                                             |
-| &emsp;&emsp;name         | string   | R           | Device name                                                                                    |
-| &emsp;&emsp;mac          | string   | R           | Device MAC address                                                                             |
-| &emsp;&emsp;version      | string   | R           | Device firmware version                                                                        |
-| &emsp;&emsp;created_at   | string   | R           | Device register time                                                                           |
-| &emsp;&emsp;product      | object   | R           | Product information                                                                            |
-| &emsp;&emsp;&emsp;id     | string   | C           | Product ID, refer to [Specification - 2.1 Products List](/main/specification#21-products-list) |
-| &emsp;&emsp;&emsp;desc   | string   | C           | Product Description                                                                            |
-| &emsp;data               | object   | C           | Device data                                                                                    |
-| &emsp;&emsp;battery      | object   | C           | Battery                                                                                        |
-| &emsp;&emsp;humidity     | object   | C           | Humidity                                                                                       |
-| &emsp;&emsp;pressure     | object   | C           | Pressure                                                                                       |
-| &emsp;&emsp;temperature  | object   | C           | Temperature                                                                                    |
-| &emsp;&emsp;tvoc         | object   | C           | TVOC                                                                                           |
-| &emsp;&emsp;co2          | object   | C           | CO2                                                                                            |
-| &emsp;&emsp;pm25         | object   | C           | pm25                                                                                           |
-| &emsp;&emsp;timestamp    | object   | C           | Time                                                                                           |
-| &emsp;&emsp;&emsp;value  | float    | C           | Value                                                                                          |
-| &emsp;&emsp;&emsp;level  | float    | C           | Level                                                                                          |
-| &emsp;&emsp;&emsp;status | float    | C           | Status                                                                                         |
+| Parameter                 | Type     | Requirement | Description                                                                                    |
+| :------------------------ | :------- | :---------- | :--------------------------------------------------------------------------------------------- |
+| total                     | int      | R           | Total number of devices                                                                        |
+| devices                   | []object | R           | Device data                                                                                    |
+| &emsp;info                | object   | R           | Device information                                                                             |
+| &emsp;&emsp;name          | string   | R           | Device name                                                                                    |
+| &emsp;&emsp;mac           | string   | R           | Device MAC address                                                                             |
+| &emsp;&emsp;group_id      | string   | R           | Group ID                                                                                       |
+| &emsp;&emsp;group_name    | string   | R           | Group Name                                                                                     |
+| &emsp;&emsp;status        | object   | C           | Status                                                                                         |
+| &emsp;&emsp;&emsp;offline | bool     | C           | Status(True: offline, False: online)                                                           |
+| &emsp;&emsp;version       | string   | R           | Device firmware version                                                                        |
+| &emsp;&emsp;created_at    | string   | R           | Device register time                                                                           |
+| &emsp;&emsp;product       | object   | R           | Product information                                                                            |
+| &emsp;&emsp;&emsp;id      | string   | C           | Product ID, refer to [Specification - 2.1 Products List](/main/specification#21-products-list) |
+| &emsp;&emsp;&emsp;name    | string   | C           | Product name                                                                                   |
+| &emsp;&emsp;&emsp;en_name | string   | C           | Product English name                                                                           |
+| &emsp;data                | object   | C           | Device data                                                                                    |
+| &emsp;&emsp;battery       | object   | C           | Battery                                                                                        |
+| &emsp;&emsp;humidity      | object   | C           | Humidity                                                                                       |
+| &emsp;&emsp;pressure      | object   | C           | Pressure                                                                                       |
+| &emsp;&emsp;temperature   | object   | C           | Temperature                                                                                    |
+| &emsp;&emsp;tvoc          | object   | C           | TVOC                                                                                           |
+| &emsp;&emsp;co2           | object   | C           | CO2                                                                                            |
+| &emsp;&emsp;pm25          | object   | C           | pm25                                                                                           |
+| &emsp;&emsp;timestamp     | object   | C           | Time                                                                                           |
+| &emsp;&emsp;&emsp;value   | float    | C           | Value                                                                                          |
+| &emsp;&emsp;&emsp;level   | float    | C           | Level                                                                                          |
+| &emsp;&emsp;&emsp;status  | float    | C           | Status                                                                                         |
 
 ***Notice:*** Different product has different kinds of data sub-parameters, please refer to [Specification - 2. Products List and Support Note](/main/specification#2-products-list-and-support-note)
 
@@ -202,9 +213,14 @@ Demo:
                 "mac": "582D34460442",
                 "version": "1.0.1_0049",
                 "created_at": 1573034091,
-                "status":["offline"],
-                "product": {"id":1001, "desc":"青萍温湿度气压计"}
-            }
+                "status":{
+                    "offline": false,
+                    "altering": false
+                },
+                "group_id": 11,
+                "group_name": "卡卡罗特",
+                "product": {"id": 1101, "name": "青萍温湿度气压计","en_name": "Qingping Temp & RH Barometer"}
+            },
             "data":{
                 "battery": {"value": 70},
                 "humidity": {"value": 22.2},
@@ -219,9 +235,14 @@ Demo:
                 "mac": "582D34460442",
                 "version": "1.0.1_0049",
                 "created_at": 1573034091,
-                "status":["offline"],
-                "product": {"id":1001, "desc":"青萍温湿度气压计"}
-            }
+                "status":{
+                    "offline": false,
+                    "altering": false
+                },
+                "group_id": 11,
+                "group_name": "卡卡罗特",
+                "product": {"id": 1101, "name": "青萍温湿度气压计","en_name": "Qingping Temp & RH Barometer"}
+            },
             "data":{
                 "battery": {"value": 70},
                 "humidity": {"value": 22.2},
@@ -422,5 +443,65 @@ https://apis.cleargrass.com/v1/apis/devices/settings
     "mac": ["582D34460442"],
     "report_interval": 10,
     "collect_interval": 5
+}
+```
+
+### 1.7 Group List
+
+- **Description:** Group list
+- **HTTP Method:** GET
+- **Endpoint:** /v1/apis/devices/groups
+
+#### 1.7.1 Request Header
+
+| Parameter     | Value            | Description                                                                |
+| :------------ | :--------------- | :------------------------------------------------------------------------- |
+| Authorization | token            | Formate is "Bearer YourToken", There is a blank between "Bearer" and token |
+| Content-Type  | application/json | Fixed value                                                                |
+
+#### 1.7.2 Request Parameter
+
+| Parameter | Type | Requirement | Description                                              |
+| :-------- | :--- | :---------- | :------------------------------------------------------- |
+| timestamp | int  | R           | Timestamp in millisecond, valid in 20 seconds, no repeat |
+
+Request Demo:
+
+```sh
+https://apis.cleargrass.com/v1/apis/devices/groups?timestamp=1602468406039
+```
+
+#### 1.7.3 Response
+
+| Parameter  | Type     | Requirement | Description      |
+| :--------- | :------- | :---------- | :--------------- |
+| total      | int      | R           | Number of groups |
+| groups     | []object | R           | Group list       |
+| &emsp;id   | int      | R           | Group ID         |
+| &emsp;name | string   | R           | Group name       |
+
+Demo:
+
+```json
+{
+    "total": 4,
+    "groups": [
+        {
+            "id": 1381,
+            "name": "卡卡罗特"
+        },
+        {
+            "id": 1382,
+            "name": "贝吉塔"
+        },
+        {
+            "id": -11,
+            "name": "plus"
+        },
+        {
+            "id": -12,
+            "name": "devPlatform"
+        }
+    ]
 }
 ```
