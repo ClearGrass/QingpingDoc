@@ -74,7 +74,7 @@ Provide these information to us for the monitors
 
 ### 4.1 Modify Report Interval Setting
 
-Please refer to [QingPing MQTT Communication Protocol - 3.16 Report Interval Modification](/main/private/public_mqtt#316-Report-Interval-Modification)
+Please refer to [QingPing MQTT Communication Protocol - 3.16 Modify Data Report Interval](/main/private/public_mqtt#316-modify-data-report-interval)
 
 ### 4.2 Report Data Format
 
