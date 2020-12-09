@@ -17,7 +17,7 @@
 
 ## 1. Definition
 
-Qingping Air Monitor privatization is the monitor connecting to the third part's cloud directly by setting the MQTT configuration.
+Qingping Air Monitor privatization is the monitor connecting to the third part's cloud directly by setting the MQTT configuration.  
 ***Note:***  Some functions on the monitor depend on the HTTPs API, Such as Weather data, location, time, firmware upgrade. By default, these functions don't support privatization, please contact us if you need this.
 
 ## 2. Products
