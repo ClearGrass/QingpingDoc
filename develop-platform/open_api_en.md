@@ -62,7 +62,8 @@ https://apis.cleargrass.com/v1/apis/devices
 
 {
     "device_token": "143412",
-    "product_id": "1001"
+    "product_id": 1001,
+    "timestamp": 1596527411689
 }
 ```
 
