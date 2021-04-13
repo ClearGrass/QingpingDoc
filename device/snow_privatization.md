@@ -60,15 +60,15 @@
 
 需客户提供 API 支持为每台设备下发以下参数，
 
-| 参数           | 说明          |
-| -------------- | ------------- |
-| host           | MQTT 服务地址 |
-| port           | 端口          |
-| username       | 用户名        |
-| password       | 密码          |
-| clientId       | 客户 id       |
-| publishTopic   | 发布主题      |
-| subscribeTopic | 订阅主题      |
+| 参数           | 说明                               |
+| -------------- | ---------------------------------- |
+| host           | MQTT 服务地址（IP地址:Port端口号） |
+| port           | 端口                               |
+| username       | 用户名                             |
+| password       | 密码                               |
+| clientId       | 客户 id                            |
+| publishTopic   | 发布主题                           |
+| subscribeTopic | 订阅主题                           |
 
 ## 4. 数据通信协议
 
