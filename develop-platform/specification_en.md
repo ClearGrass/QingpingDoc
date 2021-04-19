@@ -73,11 +73,16 @@ Every request need an Access Token in the header. How to get the Access Token, p
 
 ### 2.1 Products List
 
-| Product Code | Product Name                     |
-| ------------ | -------------------------------- |
-| 1001         | Qingping Temp & RH Monitor Pro S |
-| 1101         | Qingping Temp & RH Barometer     |
-| 1201         | Qingping Air Monitor             |
+| Product Code | Product Name                           |
+| ------------ | -------------------------------------- |
+| 1001         | Qingping Temp & RH Monitor Pro S       |
+| 1101         | Qingping Temp & RH Barometer           |
+| 1201         | Qingping Air Monitor                   |
+| 1203         | Qingping Air Monitor Lite              |
+| 1401         | Qingping Bluetooth Alarm Clock         |
+| 1501         | Qingping Motion & Ambient Light Sensor |
+| 1502         | Qingping Door/Window Contact Sensor    |
+
 
 ### 2.2 Device Property List and Support Specification of Every Product
 
