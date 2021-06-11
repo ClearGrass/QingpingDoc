@@ -453,7 +453,7 @@ https://apis.cleargrass.com/v1/apis/devices/settings
 
 - **接口说明：** 分组列表
 - **接口方法：** GET
-- **接口地址：** /v1/apis/devices/groups
+- **接口地址：** /v1/apis/groups
 
 #### 1.7.1 请求头
 
@@ -471,7 +471,7 @@ https://apis.cleargrass.com/v1/apis/devices/settings
 请求示例：
 
 ```sh
-https://apis.cleargrass.com/v1/apis/devices/groups?timestamp=1602468406039
+https://apis.cleargrass.com/v1/apis/groups?timestamp=1602468406039
 ```
 
 #### 1.7.3 返回结果

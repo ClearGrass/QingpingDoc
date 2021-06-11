@@ -451,7 +451,7 @@ https://apis.cleargrass.com/v1/apis/devices/settings
 
 - **Description:** Group list
 - **HTTP Method:** GET
-- **Endpoint:** /v1/apis/devices/groups
+- **Endpoint:** /v1/apis/groups
 
 #### 1.7.1 Request Header
 
@@ -469,7 +469,7 @@ https://apis.cleargrass.com/v1/apis/devices/settings
 Request Demo:
 
 ```sh
-https://apis.cleargrass.com/v1/apis/devices/groups?timestamp=1602468406039
+https://apis.cleargrass.com/v1/apis/groups?timestamp=1602468406039
 ```
 
 #### 1.7.3 Response
