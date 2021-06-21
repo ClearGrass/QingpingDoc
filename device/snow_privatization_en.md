@@ -60,15 +60,15 @@ Submit the settings to QingOs platform.
 
 Provide these information to us for the monitors
 
-| Parameter      | Description                                                   |
-| -------------- | ------------------------------------------------------------- |
-| host           | MQTT host                                                     |
-| port           | MQTT port                                                     |
-| username       | MQTT user name                                                |
-| password       | MQTT user password                                            |
-| clientId       | MQTT client id(should be different for each monitor)          |
-| publishTopic   | Topic the monitor use to upload data                          |
-| subscribeTopic | Topic which the monitor listen to and get message from server |
+| Parameter      | Description                                                                                                                      |
+| -------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| host           | MQTT host                                                                                                                        |
+| port           | MQTT port                                                                                                                        |
+| username       | MQTT user name                                                                                                                   |
+| password       | MQTT user password                                                                                                               |
+| clientId       | MQTT client id(should be different for each monitor)                                                                             |
+| publishTopic   | Topic the monitor use to upload data(default: qingping/{mac}/up, mac means MAC address of the device)                            |
+| subscribeTopic | Topic which the monitor listen to and get message from server(default: qingping/{mac}/down, mac means MAC address of the device) |
 
 ## 4. Data communication protocol
 

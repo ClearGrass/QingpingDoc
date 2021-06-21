@@ -68,15 +68,15 @@ LinkWAN 版产品：支持阿里 IoT 接入。
 
 需客户提供 API 支持为每台设备下发以下参数，
 
-| 参数           | 说明                               |
-| -------------- | ---------------------------------- |
-| host           | MQTT 服务地址（IP地址:Port端口号） |
-| port           | 端口                               |
-| username       | 用户名                             |
-| password       | 密码                               |
-| clientId       | 客户 id                            |
-| publishTopic   | 发布主题                           |
-| subscribeTopic | 订阅主题                           |
+| 参数           | 说明                                                                                |
+| -------------- | ----------------------------------------------------------------------------------- |
+| host           | MQTT 服务地址（IP地址:Port端口号）                                                  |
+| port           | 端口                                                                                |
+| username       | 用户名                                                                              |
+| password       | 密码                                                                                |
+| clientId       | 客户 id                                                                             |
+| publishTopic   | 设备上报数据主题（默认格式：qingping/{mac}/up，其中 mac 为每个设备的 MAC 地址）     |
+| subscribeTopic | 向设备下发命令主题（默认格式：qingping/{mac}/down，其中 mac 为每个设备的 MAC 地址） |
 
 ### 3.3 其它配置项
 
