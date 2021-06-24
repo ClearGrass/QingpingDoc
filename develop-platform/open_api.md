@@ -80,13 +80,6 @@ https://apis.cleargrass.com/v1/apis/devices
 | &emsp;&emsp;id      | string | C        | 产品ID（参考 [规范说明](/main/specification#21-产品列表)） |
 | &emsp;&emsp;name    | string | C        | 产品名称                                                   |
 | &emsp;&emsp;en_name | string | C        | 产品英文名称                                               |
-| data                | object | C        | 设备数据                                                   |
-| &emsp;battery       | object | C        | 电量                                                       |
-| &emsp;humidity      | object | C        | 湿度                                                       |
-| &emsp;pressure      | object | C        | 气压                                                       |
-| &emsp;temperature   | object | C        | 温度                                                       |
-| &emsp;timestamp     | object | C        | 时间                                                       |
-| &emsp;&emsp;value   | float  | C        | 数值                                                       |
 
 ***注意：*** 不同类型的设备，data 字段返回的属性种类不一样，具体参考 [规范说明](/main/specification)
 
@@ -100,13 +93,6 @@ https://apis.cleargrass.com/v1/apis/devices
         "version": "1.0.1_0049",
         "created_at": 1573034091,
         "product": {"id": 1101, "name": "青萍温湿度气压计","en_name": "Qingping Temp & RH Barometer"}
-    },
-    "data":{
-        "battery": {"value": 70},
-        "humidity": {"value": 22.2},
-        "pressure": {"value": 103.29},
-        "temperature": {"value": 20.8},
-        "timestamp": {"value": 1574565267}
     }
 }
 ```

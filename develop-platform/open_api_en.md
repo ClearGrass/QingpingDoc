@@ -80,13 +80,6 @@ https://apis.cleargrass.com/v1/apis/devices
 | &emsp;&emsp;id      | string | C           | Product ID, refer to [Specification - 2.1 Products List](/main/specification#21-products-list) |
 | &emsp;&emsp;name    | string | C           | Product name                                                                                   |
 | &emsp;&emsp;en_name | string | C           | Product English name                                                                           |
-| data                | object | C           | Device data                                                                                    |
-| &emsp;battery       | object | C           | Battery                                                                                        |
-| &emsp;humidity      | object | C           | Humidity                                                                                       |
-| &emsp;pressure      | object | C           | Pressure                                                                                       |
-| &emsp;temperature   | object | C           | Temperature                                                                                    |
-| &emsp;timestamp     | object | C           | Time                                                                                           |
-| &emsp;&emsp;value   | float  | C           | Value                                                                                          |
 
 ***Notice:*** Different product has different kinds of data sub-parameters, please refer to [Specification - 2. Products List and Support Note](/main/specification#2-products-list-and-support-note)
 
@@ -100,13 +93,6 @@ Demo:
         "version": "1.0.1_0049",
         "created_at": 1573034091,
         "product": {"id":"10", "name": "青萍温湿度气压计", "en_name": "Qingping Temp & RH Barometer"}
-    },
-    "data":{
-        "battery": {"value": 70},
-        "humidity": {"value": 22.2},
-        "pressure": {"value": 103.29},
-        "temperature": {"value": 20.8},
-        "timestamp": {"value": 1574565267}
     }
 }
 ```
