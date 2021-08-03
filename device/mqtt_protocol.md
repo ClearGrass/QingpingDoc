@@ -334,8 +334,8 @@
         "co2_sampling_interval": 2,
         "pm_sampling_interval":1,
         "temperature_unit":"C",
-        "night_mode_start_time":1200,// 夜间模式开始时间,为从0点0分开始的分钟数
-        "night_mode_end_time":480, // 夜间模式结束时间,为从0点0分开始的分钟数
+        "night_mode_start_time":1200, // 夜间模式开始时间,为从0点0分开始的分钟数
+        "night_mode_end_time":480 // 夜间模式结束时间,为从0点0分开始的分钟数
     },
     "timestamp": 1592192453
 }

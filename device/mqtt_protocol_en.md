@@ -333,7 +333,7 @@ The table lists all possible parameters, devices of different product may have d
         "pm_sampling_interval":1,
         "temperature_unit":"C",
         "night_mode_start_time":1200,
-        "night_mode_end_time":480,
+        "night_mode_end_time":480
     },
     "timestamp": 1592192453
 }
