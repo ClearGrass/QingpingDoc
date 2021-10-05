@@ -429,7 +429,8 @@ https://apis.cleargrass.com/v1/apis/devices/settings
 {
     "mac": ["582D34460442"],
     "report_interval": 10,
-    "collect_interval": 5
+    "collect_interval": 5,
+    "timestamp": 1596527411689
 }
 ```
 
